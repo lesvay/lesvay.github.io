@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HTTP请求方法 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD方法。
+HTTP1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">HTTP请求方法</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">HTTP请求方法</h1>
+        <div class="stuff">
+            <span>三月 14, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/http/" rel="tag">http</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD方法。</p>
+<p>HTTP1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。</p>
+<p>所以HTTP目前为止一共有九种请求方法。</p>
+<h1 id="HEAD-获取报头"><a href="#HEAD-获取报头" class="headerlink" title="HEAD(获取报头)"></a>HEAD(获取报头)</h1><blockquote>
+<p>The <strong>HTTP <code>HEAD</code> method</strong> requests the headers that are returned if the specified resource would be requested with an HTTP <code>GET</code> method. Such a request can be done before deciding to download a large resource to save bandwidth, for example.</p>
+<p>A response to a <code>HEAD</code> method should not have a body. If so, it must be ignored. Even so, entity headers describing the content of the body, like <code>Content-Length</code> may be included in the response. They don’t relate to the body of the <code>HEAD</code> response, which should be empty, but to the body which a similar request using the <code>GET</code>method would have returned as a response.</p>
+</blockquote>
+<p>HEAD与GET方法类似，但是它不会返回消息体，用来获取报头，通常用来测试超链接的有效性、可用性。</p>
+<h1 id="GET-查询"><a href="#GET-查询" class="headerlink" title="GET(查询)"></a>GET(查询)</h1><blockquote>
+<p>The <strong>HTTP <code>GET</code> method</strong> requests a representation of the specified resource. Requests using <code>GET</code> should only retrieve data.</p>
+</blockquote>
+<p>HTTP协议规定GET是获取资源的方法，通过URL提交，在地址栏中可以看到，其所提交的数据最多只能有1024个字节。GET有利于资源的传播，其请求在Ajax环境下不会被缓存，有利于减轻服务器的压力。</p>
+<h1 id="POST-新增"><a href="#POST-新增" class="headerlink" title="POST(新增)"></a>POST(新增)</h1><blockquote>
+<p>The <strong>HTTP <code>POST</code> method</strong> sends data to the server. The type of the body of the request is indicated by the Content-Type header.</p>
+</blockquote>
+<p>HTTP协议规定POST是创建资源的方法，其内容是在HTTP请求的body里实现，POST传输数据时不会在URL里显示，可以传输较为大量的数据，在Ajax环境下会被缓存，非幂等的，多次访问都会产生影响。</p>
+<h1 id="PUT-修改"><a href="#PUT-修改" class="headerlink" title="PUT(修改)"></a>PUT(修改)</h1><blockquote>
+<p>The <strong>HTTP PUT request method</strong> creates a new resource or replaces a representation of the target resource with the request payload.</p>
+<p>The difference between <code>PUT</code> and <code>POST</code> is that <code>PUT</code>is idempotent: calling it once or several times successively has the same effect (that is no side effect), where successive identical <code>POST</code> may have additional effects, like passing an order several times.</p>
+</blockquote>
+<p>HTTP协议规定PUT是更新资源的方法,<code>PUT</code>是幂等的方法，即调用一次与调用多次是等价的。</p>
+<h1 id="PATCH-修改"><a href="#PATCH-修改" class="headerlink" title="PATCH(修改)"></a>PATCH(修改)</h1><blockquote>
+<p>The <strong>HTTP PATCH request method</strong> applies partial modifications to a resource.</p>
+<p>The HTTP <code>PUT</code>method only allows complete replacement of a document. Unlike <code>PUT</code>, <code>PATCH</code> is not idempotent, meaning successive identical patch requests <em>may</em> have different effects. However, it is possible to issue <code>PATCH</code> requests in such a way as to be idempotent.</p>
+<p>PATCH (like PUT) may have side-effects on other resources.</p>
+<p>To find out whether a server supports <code>PATCH</code>, a server can advertise its support by adding it to the list in the Allow or Access-Control-Allow-Methods(for CORS) response headers.</p>
+</blockquote>
+<p>HTTP协议规定PATCH是修改资源的方法，是对PUT方法的补充，用来对已知资源进行局部更新，但PATCH与POST一样是非幂等的。</p>
+<h1 id="DELETE-删除"><a href="#DELETE-删除" class="headerlink" title="DELETE(删除)"></a>DELETE(删除)</h1><blockquote>
+<p>The <strong>HTTP DELETE request method</strong> deletes the specified resource.</p>
+</blockquote>
+<p>HTTP协议规定DELETE是删除资源的方法.</p>
+<h1 id="CONNECT-代理"><a href="#CONNECT-代理" class="headerlink" title="CONNECT(代理)"></a>CONNECT(代理)</h1><blockquote>
+<p>The <strong>HTTP <code>CONNECT</code> method</strong> starts two-way communications with the requested resource. It can be used to open a tunnel.</p>
+<p>For example, the <code>CONNECT</code> method can be used to access websites that use SSL (HTTPS). The client asks an HTTP Proxy server to tunnel the TCP connection to the desired destination. The server then proceeds to make the connection on behalf of the client. Once the connection has been established by the server, the Proxy server continues to proxy the TCP stream to and from the client.</p>
+</blockquote>
+<p><code>CONNECT</code>在网页开发中一般不会被用到，其作用是将服务器作为代理(访问中介)，让服务器代替用户访问别的资源，然后再将该资源返回给用户，这样用户就可以访问到只有服务器才能访问的网站(比如翻墙 )，它直接使用TCP去连接。</p>
+<h1 id="TRACE-测试"><a href="#TRACE-测试" class="headerlink" title="TRACE(测试)"></a>TRACE(测试)</h1><blockquote>
+<p>The <strong>HTTP <code>TRACE</code> method</strong> performs a message loop-back test along the path to the target resource, providing a useful debugging mechanism.</p>
+</blockquote>
+<p>回显服务器收到的请求，主要用于测试或诊断。</p>
+<h1 id="OPTIONS-测试"><a href="#OPTIONS-测试" class="headerlink" title="OPTIONS(测试)"></a>OPTIONS(测试)</h1><blockquote>
+<p>The <strong>HTTP <code>OPTIONS</code> method</strong> is used to describe the communication options for the target resource. The client can specify a URL for the OPTIONS method, or an asterisk (*) to refer to the entire server.</p>
+<p> For Example, to find out which request methods a server supports, one can use curl and issue an OPTIONS request.</p>
+</blockquote>
+<p>通过该方法传回该资源所支持的所有HTTP请求，也可以测试服务器是否可以正常使用。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods" target="_blank" rel="noopener">MDN</a></p>
+<p><a href="https://www.runoob.com/http/http-methods.html" target="_blank" rel="noopener">菜鸟联盟</a></p>
+<p><a href="https://blog.csdn.net/kobejayandy/article/details/24606521" target="_blank" rel="noopener">CSDN-kobejayandy</a></p>
+<p><a href="https://www.jianshu.com/p/93727598b564" target="_blank" rel="noopener">简书-5onghua</a></p>
+<p><a href="https://www.zhihu.com/question/31640769" target="_blank" rel="noopener">知乎</a></p>
+<p><a href="https://www.cnblogs.com/liuzhenbo/p/11045048.html" target="_blank" rel="noopener">博客园-心田居士</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HEAD-获取报头"><span class="toc-number">1.</span> <span class="toc-text">HEAD(获取报头)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GET-查询"><span class="toc-number">2.</span> <span class="toc-text">GET(查询)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#POST-新增"><span class="toc-number">3.</span> <span class="toc-text">POST(新增)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PUT-修改"><span class="toc-number">4.</span> <span class="toc-text">PUT(修改)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PATCH-修改"><span class="toc-number">5.</span> <span class="toc-text">PATCH(修改)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DELETE-删除"><span class="toc-number">6.</span> <span class="toc-text">DELETE(删除)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CONNECT-代理"><span class="toc-number">7.</span> <span class="toc-text">CONNECT(代理)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TRACE-测试"><span class="toc-number">8.</span> <span class="toc-text">TRACE(测试)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OPTIONS-测试"><span class="toc-number">9.</span> <span class="toc-text">OPTIONS(测试)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">10.</span> <span class="toc-text">参考文献</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

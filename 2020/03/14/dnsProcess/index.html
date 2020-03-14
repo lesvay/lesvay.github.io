@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DNS域名解析过程 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="DNS域名解析过程大致分为两种：
+迭代查询所谓迭代查询是指：根域名服务器收到查询请求，要么给出查询结果，要么告诉本地域名服务器下一步向哪个域名服务器进行查询。
+主要是本地域名服务器向根域名服务器查询,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">DNS域名解析过程</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">DNS域名解析过程</h1>
+        <div class="stuff">
+            <span>三月 14, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dns/" rel="tag">dns</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>DNS域名解析过程大致分为两种：</p>
+<h1 id="迭代查询"><a href="#迭代查询" class="headerlink" title="迭代查询"></a>迭代查询</h1><p>所谓迭代查询是指：根域名服务器收到查询请求，要么给出查询结果，要么告诉本地域名服务器下一步向哪个域名服务器进行查询。</p>
+<p>主要是本地域名服务器向根域名服务器查询信息时所采用的方式。</p>
+<h1 id="递归查询"><a href="#递归查询" class="headerlink" title="递归查询"></a>递归查询</h1><p>所谓递归查询是指：本地域名服务器只请求一次，后面几次都是在其他几个域名服务器之间进行的。</p>
+<p>主要是主机向本地域名服务器查询信息时所采用的方式。当主机需要查询IP时，本地域名服务器不知道域名所对应的IP地址，那么本地域名服务器就以DNS客户的身份，向其他根域名服务器发送查询请求报文，而不是让主机自己进行下一步查询。</p>
+<h1 id="访问度娘的过程"><a href="#访问度娘的过程" class="headerlink" title="访问度娘的过程"></a>访问度娘的过程</h1><pre><code>①本机向local dns请求www.baidu.com
+②local dns向根域请求www.baidu.com，根域返回com.域的服务器IP
+③向com.域请求www.baidu.com，com.域返回baidu.com域的服务器IP
+④向baidu.com请求www.baidu.com，返回cname www.a.shifen.com和a.shifen.com域的服务器IP
+⑤向root域请求www.a.shifen.com
+⑥向com.域请求www.a.shife.com
+⑦向shifen.com请求
+⑧向a.shifen.com域请求
+⑨拿到www.a.shifen.com的IP
+⑩localdns返回本机www.baidu.com cname www.a.shifen.com 以及 www.a.shifen.com的IP</code></pre><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://blog.csdn.net/crazw/article/details/8986504" target="_blank" rel="noopener">CSDN-Crazw_jia</a></p>
+<p><a href="https://blog.csdn.net/Daputao_net/article/details/81203531" target="_blank" rel="noopener">CSDN-Daputao_net</a></p>
+<p><a href="https://www.cnblogs.com/qingdaofu/p/7399670.html" target="_blank" rel="noopener">博客园-皈依之路</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迭代查询"><span class="toc-number">1.</span> <span class="toc-text">迭代查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归查询"><span class="toc-number">2.</span> <span class="toc-text">递归查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#访问度娘的过程"><span class="toc-number">3.</span> <span class="toc-text">访问度娘的过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

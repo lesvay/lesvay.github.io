@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HTTP的头信息 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="HTTP头信息主要包括通用头、请求头、响应头、实体头。
+
+通用头部通用头域包含请求和响应消息都支持的头域，通用头域包含缓存头部Cache-Control、Pragma及信息性头部Connection,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">HTTP的头信息</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">HTTP的头信息</h1>
+        <div class="stuff">
+            <span>三月 14, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/http/" rel="tag">http</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>HTTP头信息主要包括通用头、请求头、响应头、实体头。</p>
+<p><img src="/.io//qingqiutou.png" alt="qingqiutou"><br><img src="/.io//xiangyingtou.png" alt="xiangyingtou"></p>
+<h1 id="通用头部"><a href="#通用头部" class="headerlink" title="通用头部"></a>通用头部</h1><p>通用头域包含请求和响应消息都支持的头域，通用头域包含缓存头部Cache-Control、Pragma及信息性头部Connection、Date、Transfer-Encoding、Update、Via。</p>
+<table>
+<thead>
+<tr>
+<th align="left">应答头</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Cache-Control</td>
+<td align="left">指定请求和响应遵循的缓存机制</td>
+</tr>
+<tr>
+<td align="left">Pragma</td>
+<td align="left">用来包含实现特定的指令</td>
+</tr>
+<tr>
+<td align="left">Connection</td>
+<td align="left">表示是否需要持久连接</td>
+</tr>
+<tr>
+<td align="left">Date</td>
+<td align="left">指定请求和响应遵循的缓存机制</td>
+</tr>
+<tr>
+<td align="left">Cache-Control</td>
+<td align="left">表示消息发送的时间</td>
+</tr>
+<tr>
+<td align="left">Transfer-Encoding</td>
+<td align="left">服务器表明自己对本响应消息体作了怎样的编码</td>
+</tr>
+<tr>
+<td align="left">Upgrade</td>
+<td align="left">指定另一种可能完全不同的协议</td>
+</tr>
+<tr>
+<td align="left">Via</td>
+<td align="left">列出该响应经过了哪些代理服务器，他们用什么协议发送的请求</td>
+</tr>
+</tbody></table>
+<h1 id="请求头部"><a href="#请求头部" class="headerlink" title="请求头部"></a>请求头部</h1><p>请求头用于说明是谁或什么在发送请求、请求源于何处，或者客户端的喜好及能力。服务器可以根据请求头部给出的客户端信息，试着为客户端提供更好的响应。请求头域可能包含下列字段Accept、Accept-Charset、Accept- Encoding、Accept-Language、Authorization、From、Host、If-Modified-Since、If-Match、If-None-Match、If-Range、If-Range、If-Unmodified-Since、Max-Forwards、Proxy-Authorization、Range、Referer、User-Agent。对请求头域的扩展要求通讯双方都支持，如果存在不支持的请求头域，一般将会作为实体头域处理。</p>
+<table>
+<thead>
+<tr>
+<th align="left">应答头</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Accept</td>
+<td align="left">告诉WEB服务器自己接受什么介质类型</td>
+</tr>
+<tr>
+<td align="left">Accept-Charset</td>
+<td align="left">浏览器告诉服务器自己能接收的字符集</td>
+</tr>
+<tr>
+<td align="left">Accept-Encoding</td>
+<td align="left">浏览器申明自己接收的编码方法</td>
+</tr>
+<tr>
+<td align="left">Accept-Language</td>
+<td align="left">浏览器申明自己接收的语言</td>
+</tr>
+<tr>
+<td align="left">Authorization</td>
+<td align="left">客户端接收到服务器的WWW-Authenticate响应时，用该头部来回应服务器自己的身份验证信息</td>
+</tr>
+<tr>
+<td align="left">If-Match</td>
+<td align="left">如果对象的ETag没有改变，即对象没有改变，才执行请求的动作</td>
+</tr>
+<tr>
+<td align="left">If-None-Match</td>
+<td align="left">如果对象的ETag改变了，才执行请求的动作</td>
+</tr>
+<tr>
+<td align="left">If-Modified-Since</td>
+<td align="left">如果请求的对象在该头部指定的时间之后修改了，才执行请求的动作，否则返回代码304，告诉浏览器该对象没有修改</td>
+</tr>
+<tr>
+<td align="left">If-Unmodified-Since</td>
+<td align="left">如果请求的对象在该头部指定的时间之后没修改过，才执行请求的动作</td>
+</tr>
+<tr>
+<td align="left">If-Range</td>
+<td align="left">浏览器告诉 WEB 服务器，如果我请求的对象没有改变，就把我缺少的部分给我，如果对象改变了，就把整个对象给我</td>
+</tr>
+<tr>
+<td align="left">Range</td>
+<td align="left">浏览器告诉 WEB 服务器自己想取对象的哪部分</td>
+</tr>
+<tr>
+<td align="left">Proxy-Authenticate</td>
+<td align="left">代理服务器响应浏览器，要求其提供代理身份验证信息</td>
+</tr>
+<tr>
+<td align="left">Host</td>
+<td align="left">客户端指定自己想访问的WEB服务器的域名/IP 地址和端口号</td>
+</tr>
+<tr>
+<td align="left">Referer</td>
+<td align="left">浏览器向WEB 服务器表明自己是从哪个网页URL获得点击当前请求中的网址/URL</td>
+</tr>
+<tr>
+<td align="left">User-Agent</td>
+<td align="left">浏览器表明自己的身份</td>
+</tr>
+</tbody></table>
+<h1 id="响应头部"><a href="#响应头部" class="headerlink" title="响应头部"></a>响应头部</h1><p>响应头向客户端提供一些额外信息，比如谁在发送响应、响应者的功能，甚至与响应相关的一些特殊指令。这些头部有助于客户端处理响应，并在将来发起更好的请求。响应头域包含Age、Location、Proxy-Authenticate、Public、Retry- After、Server、Vary、Warning、WWW-Authenticate。对响应头域的扩展要求通讯双方都支持，如果存在不支持的响应头域，一般将会作为实体头域处理。</p>
+<table>
+<thead>
+<tr>
+<th align="left">应答头</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Age</td>
+<td align="left">当代理服务器用自己缓存的实体去响应请求时，用该头部表明该实体从产生到现在经过多长时间了</td>
+</tr>
+<tr>
+<td align="left">Server</td>
+<td align="left">WEB 服务器表明自己是什么软件及版本等信息</td>
+</tr>
+<tr>
+<td align="left">Accept-Ranges</td>
+<td align="left">WEB服务器表明自己是否接受获取其某个实体的一部分的请求</td>
+</tr>
+<tr>
+<td align="left">Vary</td>
+<td align="left">WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求</td>
+</tr>
+</tbody></table>
+<h1 id="实体头部"><a href="#实体头部" class="headerlink" title="实体头部"></a>实体头部</h1><p>实体头部提供了有关实体及其内容的大量信息，从有关对象类型的信息，到能够对资源使用的各种有效的请求方法。总之，实体头部可以告知接收者它在对什么进行处理。请求消息和响应消息都可以包含实体信息，实体信息一般由实体头域和实体组成。实体头域包含关于实体的原信息，实体头包括信息性头部Allow、Location，内容头部Content-Base、Content-Encoding、Content-Language、Content-Length、Content-Location、Content-MD5、Content-Range、Content-Type，缓存头部Etag、Expires、Last-Modified、extension-header。</p>
+<table>
+<thead>
+<tr>
+<th align="left">应答头</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Allow</td>
+<td align="left">服务器支持哪些请求方法</td>
+</tr>
+<tr>
+<td align="left">Location</td>
+<td align="left">表示客户应当到哪里去提取文档，用于将接收端定位到资源的位置（URL）上</td>
+</tr>
+<tr>
+<td align="left">Content-Base</td>
+<td align="left">解析主体中的相对URL时使用的基础URL</td>
+</tr>
+<tr>
+<td align="left">Content-Encoding</td>
+<td align="left">WEB服务器表明自己使用了什么压缩方法压缩响应中的对象</td>
+</tr>
+<tr>
+<td align="left">Content-Language</td>
+<td align="left">WEB 服务器告诉浏览器理解主体时最适宜使用的自然语言</td>
+</tr>
+<tr>
+<td align="left">Content-Length</td>
+<td align="left">WEB服务器告诉浏览器自己响应的对象的长度或尺寸</td>
+</tr>
+<tr>
+<td align="left">Content-Location</td>
+<td align="left">资源实际所处的位置</td>
+</tr>
+<tr>
+<td align="left">Content-MD5</td>
+<td align="left">主体的MD5校验和</td>
+</tr>
+<tr>
+<td align="left">Content-Range</td>
+<td align="left">传送的范围</td>
+</tr>
+<tr>
+<td align="left">Content-Type</td>
+<td align="left">WEB 服务器告诉浏览器自己响应的对象的类型</td>
+</tr>
+<tr>
+<td align="left">Etag</td>
+<td align="left">供WEB服务器判断一个对象是否改变了</td>
+</tr>
+<tr>
+<td align="left">Expires</td>
+<td align="left">WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求</td>
+</tr>
+<tr>
+<td align="left">Last-Modified</td>
+<td align="left">WEB服务器认为对象的最后修改时间</td>
+</tr>
+</tbody></table>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://blog.csdn.net/wangzhen_csdn/article/details/80776991" target="_blank" rel="noopener">CSDN-wangzhibo_csdn</a><br><a href="https://segmentfault.com/q/1010000010814115" target="_blank" rel="noopener">segmentfault-某熊猫桑</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通用头部"><span class="toc-number">1.</span> <span class="toc-text">通用头部</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求头部"><span class="toc-number">2.</span> <span class="toc-text">请求头部</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#响应头部"><span class="toc-number">3.</span> <span class="toc-text">响应头部</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实体头部"><span class="toc-number">4.</span> <span class="toc-text">实体头部</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

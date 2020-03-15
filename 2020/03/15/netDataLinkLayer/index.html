@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>netDataLinkLayer - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="概述
+单位：Frames帧
+硬件：交换机、网桥
+任务：将网络层传下来的数据报封装成帧
+协议：PHP、HDLC
+功能
+
+
+
+
+功能
+描述
+
+
+
+链路管理
+链路连接的建立、拆除、分离
+
+
+帧定界和帧同步,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">netDataLinkLayer</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">netDataLinkLayer</h1>
+        <div class="stuff">
+            <span>三月 15, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dataLinkLayer/" rel="tag">dataLinkLayer</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>单位：Frames帧</li>
+<li>硬件：交换机、网桥</li>
+<li>任务：将网络层传下来的数据报封装成帧</li>
+<li>协议：PHP、HDLC</li>
+<li>功能</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>链路管理</td>
+<td>链路连接的建立、拆除、分离</td>
+</tr>
+<tr>
+<td>帧定界和帧同步</td>
+<td>接收方确定收到的比特流中一帧的开始位置与结束位置</td>
+</tr>
+<tr>
+<td>差错检测</td>
+<td>使接收方确定收到的数据就是发送方发送的数据</td>
+</tr>
+<tr>
+<td>透明传输</td>
+<td>不管什么样的比特组合都应当在链路中传送</td>
+</tr>
+</tbody></table>
+<h1 id="组帧"><a href="#组帧" class="headerlink" title="组帧"></a>组帧</h1><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字符计数法</td>
+<td>用一个字符表示帧的开始，一个计数字段表示该帧包含的字节数，从而推断出帧的结束位和下一个帧开始位</td>
+</tr>
+<tr>
+<td>字节填充的首尾界符法</td>
+<td>从128个ASCII码中的33个键盘不能输入的字符中挑出两个作为起始和结束标志。当传输文件不是键盘输入的,文件中会出现起始和结束标志,因此使用字节填充的首尾界符法，SOH–&gt;ESCx,EOT–&gt;ESCy,ESC–&gt;ESCz</td>
+</tr>
+<tr>
+<td>比特填充的首尾标志法</td>
+<td>首尾标志为01111110 文件中每连续5个1,则后面加入1个0</td>
+</tr>
+<tr>
+<td>物理编码违例法</td>
+<td>利用物理介质上编码违法方式来区分开始和结束</td>
+</tr>
+</tbody></table>
+<h1 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h1><h2 id="检错编码"><a href="#检错编码" class="headerlink" title="检错编码"></a>检错编码</h2><ul>
+<li><p>奇偶校验码</p>
+<ul>
+<li>奇校验码:添加一位校验码,使得整个码字里面的1个数是奇数</li>
+<li>偶校验码:添加一位校验码,使得整个码字里面的1个数是偶数</li>
+</ul>
+</li>
+<li><p>循环冗余码CRC</p>
+<p><img src="/2020/03/15/netDataLinkLayer/crc.jpg" alt="图片-CRC计算过程"></p>
+</li>
+</ul>
+<h2 id="纠错编码"><a href="#纠错编码" class="headerlink" title="纠错编码"></a>纠错编码</h2><p>海明码（Hamming Code）是一个可以有多个校验位，具有检测并纠正一位错误代码的纠错码，所以它也仅用于信道特性比较好的环境中，如以太局域网中，因为如果信道特性不好的情况下，出现的错误通常不是一位。<br>海明码的基本思想是将有效信息按某种规律分成若干组，每组安排一个校验位进行奇偶性测试，然后产生多位检测信息，并从中得出具体的出错位置，最后通过对错误位取反来将其纠正。<br>要采用海明码纠错，需要按以下步骤来进行：计算校验位数→确定校验码位置→确定校验码→实现校验和纠错。</p>
+<h1 id="传输机制"><a href="#传输机制" class="headerlink" title="传输机制"></a>传输机制</h1><h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><table>
+<thead>
+<tr>
+<th>流量控制</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>停止-等待流量控制</td>
+<td>发送方发送一个帧,得到应答后再发送下一个帧,否则一直等待</td>
+</tr>
+<tr>
+<td>滑动窗口流量控制</td>
+<td>允许发送多个帧,得到一个应答窗口向前滑动一个帧。当窗口满了,发送方会强行关闭网络层,直到有一个空闲缓冲区出来</td>
+</tr>
+</tbody></table>
+<h2 id="可靠传输机制"><a href="#可靠传输机制" class="headerlink" title="可靠传输机制"></a>可靠传输机制</h2><p>利用传输层TCP</p>
+<h2 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h2><table>
+<thead>
+<tr>
+<th>协议</th>
+<th>窗口状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>停止-等待协议</td>
+<td>发送窗口=1,接收窗口=1</td>
+<td>可靠传输（确认：发送确认帧超时，重传：一段时间没有响应就会重新发送）；数据帧破坏（如果帧正确则接收，不正确则丢弃，发送方未收到确认帧等待一段时间后再次发送）；确认帧被破坏（发送方在帧中加入标识，接收方判断是新帧还是旧帧）</td>
+</tr>
+<tr>
+<td>后退N帧协议(GBN)</td>
+<td>发送窗口&gt;1,接收窗口=1</td>
+<td>滑动窗口中，某帧出错，则其及后续帧丢弃，发送方重传</td>
+</tr>
+<tr>
+<td>选择重传协议(SR)</td>
+<td>发送窗口&gt;1,接收窗口&gt;1</td>
+<td>某帧出错，其后续帧存入接收方缓存中，发送方重发出错帧</td>
+</tr>
+</tbody></table>
+<h1 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h1><p>介质访问控制(medium access control)简称MAC。 是解决当局域网中共用信道的使用产生竞争时，如何分配信道的使用权问题。</p>
+<h2 id="信道划分介质访问控制"><a href="#信道划分介质访问控制" class="headerlink" title="信道划分介质访问控制"></a>信道划分介质访问控制</h2><ul>
+<li>频分多路复用：道路变宽</li>
+<li>时分多路复用：时间分割</li>
+<li>波分多路复用：波段分割</li>
+<li>码分多路复用：碎片数据✖码片向量，-1表示比特0，1表示比特1，0表示没有数据</li>
+</ul>
+<h2 id="随机访问介质访问控制"><a href="#随机访问介质访问控制" class="headerlink" title="随机访问介质访问控制"></a>随机访问介质访问控制</h2><ul>
+<li><p>随机接入(争用型)</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALOHA</td>
+<td>不经过任何检测就发送数据，没有收到确认则继续发送</td>
+</tr>
+<tr>
+<td>CSMA</td>
+<td>1-坚持CSMA：发送节点监听到空闲时，立即发送数据，否则继续监听；p-坚持CSMA：发送节点监听到空闲时，依概率p发送数据，以概率（1-p）延迟一段时间并重新监听；非坚持CSMA：发送节点一旦监听到空闲时，就立即发送数据，否则延迟一段时间重新监听。</td>
+</tr>
+<tr>
+<td>CSMA/CD</td>
+<td>过程：发送数据之前检测总线是否有其他计算机发送数据，若无则发送数据，发送时继续监听，若出现冲突则随机时间后继续发送，适合有线网络，是被动型。</td>
+</tr>
+<tr>
+<td>CSMA/CA</td>
+<td>过程：发送数据之前检测总线是否有其他计算机发送数据，若无则发送数据，一段时间后检查对方是否发回帧确认，若没有继续重发，适合无线型网络，是主动型。</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>受控接入：不能随便发送某数据，得到某种东西才能发送</p>
+</li>
+</ul>
+<h2 id="轮询访问介质访问控制"><a href="#轮询访问介质访问控制" class="headerlink" title="轮询访问介质访问控制"></a>轮询访问介质访问控制</h2><ul>
+<li>过程：用户不能随机发送数据，通过一个集中控制的监控站经过轮询过程后再决定信道的分配</li>
+<li>令牌环局域网</li>
+<li>令牌传递协议</li>
+</ul>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h2><h3 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h3><p>工作原理：采用总线拓扑结构，无连接工作方式，不对发送的数据进行编号，也不要求对方发送确认。</p>
+<p>MAC帧如下：</p>
+<p><img src="/2020/03/15/netDataLinkLayer/2020-03-15-netDataLinkLayer%5Cmaczhen" alt="图片-MAC帧"></p>
+<ul>
+<li><p>前导码：前同步符、帧开始定界符</p>
+</li>
+<li><p>目的地址、源地址：目的地址前八位最后一位为0，发给某一工作站；最后一位为1，其余不全为1，发给一组工作站；全为1，广播地址，发给所有工作站。</p>
+</li>
+</ul>
+<p>传输介质，其中10指10Mbit/s，base基带信号</p>
+<p><img src="/2020/03/15/netDataLinkLayer/10base.jpg" alt="图片-各种以太网"></p>
+<p>高速以太网：100Base-T以太网、吉比特以太网、10吉比特以太网</p>
+<p>无线局域网</p>
+<ul>
+<li>有固定基础设施的无线局域网（BSS基站）</li>
+<li>无固定基础设施的无线局域网（自主网络）</li>
+</ul>
+<p>IEEE802.11</p>
+<ul>
+<li>物理层：跳频扩频（FHSS）、直接序列扩频（DSS）、红外线（IR）</li>
+<li>MAC层：分布协调功能（DCF）、点协调功能（PCF）、CSMA/CD、确认机制</li>
+</ul>
+<h3 id="令牌环网"><a href="#令牌环网" class="headerlink" title="令牌环网"></a>令牌环网</h3><ul>
+<li>当网络空闲时，环路中只有令牌在网络中循环传递</li>
+<li>令牌传递到数据要发送的节点，修改令牌标志位，附加要传输的数据</li>
+<li>数据延环路继续传输，直到遇到接收节点</li>
+<li>接收节点复制数据，令牌继续传，传回发送节点</li>
+<li>发送节点检查数据是否出错，出错重传，没有就产生一个新令牌，继续在令牌环上游荡</li>
+</ul>
+<h2 id="广域网"><a href="#广域网" class="headerlink" title="广域网"></a>广域网</h2><h3 id="PPP"><a href="#PPP" class="headerlink" title="PPP"></a>PPP</h3><p>是面向字节的协议，只负责检错、是不可靠传输、点对点通讯、全双工链路。</p>
+<p>过程：用户拨号接入ISP，调制解调器对拨号做出确认，并建立一条物理连接，计算机向路由器发送一系列LCP分组，网络控制协议NCP给个人计算机分配一个临时IP，接入网络成功。</p>
+<p><img src="/2020/03/15/netDataLinkLayer/ppp.jpg" alt="图片-PPP"></p>
+<h3 id="HDLC协议"><a href="#HDLC协议" class="headerlink" title="HDLC协议"></a>HDLC协议</h3><p>是面向比特的协议</p>
+<p>基本配置</p>
+<ul>
+<li>非平衡配置：由一个主机控制整个链路</li>
+<li>平衡配置：链路两端的两个站是复合站，每个复合站可以平等的发起数据，不需要得到对方复合站的允许</li>
+</ul>
+<p><img src="/2020/03/15/netDataLinkLayer/HDCL.jpg" alt="图片-HDCL"></p>
+<h1 id="物理设备"><a href="#物理设备" class="headerlink" title="物理设备"></a>物理设备</h1><h2 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h2><p>网桥至少有两个端口，每个端口与一个网段相连，接收到数据存储到缓存中，若为出错，则查找转发表从别的端口转发出去</p>
+<ul>
+<li>优点：过滤通信量、扩大物理范围、提高可靠性、可连接至不同物理层、不同MAC层和不同速率的以太网上</li>
+<li>缺点：存储转发增加了时延、在MAC子层并没有流量控制功能、具有不同MAC子层的网段桥接在一起时时延更大、适合用户数量不多，通信量小的局域网</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>透明网桥</td>
+<td>指不知道要经过哪几个网桥，自主学习转发表，新增或更新（源地址、进入的接口和时间）</td>
+</tr>
+<tr>
+<td>源选径网桥</td>
+<td>对外广播，选择最佳路由</td>
+</tr>
+</tbody></table>
+<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><ul>
+<li>实质：多端口网桥</li>
+<li>直通式交换：只检查帧的目的地址，收到后立马被转发出去</li>
+<li>存储转发式交换：先存储在高速缓存中，检查数据是否正确，查找转发表，转发</li>
+</ul>
+<h2 id="网桥与交换机对比"><a href="#网桥与交换机对比" class="headerlink" title="网桥与交换机对比"></a>网桥与交换机对比</h2><ul>
+<li>网桥有两个端口，交换机多个</li>
+<li>网桥连接到局域网网段，交换机连接主机或HUB</li>
+<li>网桥一对计算机同时通讯，交换机允许多对</li>
+<li>网桥存储转发，以太网有直通转发和存储转发</li>
+</ul>
+<h2 id="冲突域与广播域总结"><a href="#冲突域与广播域总结" class="headerlink" title="冲突域与广播域总结"></a>冲突域与广播域总结</h2><p><img src="/2020/03/15/netDataLinkLayer/chongtu.jpg" alt="图片-冲突域与广播域"></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>天勤计算机网络</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组帧"><span class="toc-number">2.</span> <span class="toc-text">组帧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#差错检测"><span class="toc-number">3.</span> <span class="toc-text">差错检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#检错编码"><span class="toc-number">3.1.</span> <span class="toc-text">检错编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#纠错编码"><span class="toc-number">3.2.</span> <span class="toc-text">纠错编码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输机制"><span class="toc-number">4.</span> <span class="toc-text">传输机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#流量控制"><span class="toc-number">4.1.</span> <span class="toc-text">流量控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可靠传输机制"><span class="toc-number">4.2.</span> <span class="toc-text">可靠传输机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滑动窗口机制"><span class="toc-number">4.3.</span> <span class="toc-text">滑动窗口机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#介质访问控制"><span class="toc-number">5.</span> <span class="toc-text">介质访问控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#信道划分介质访问控制"><span class="toc-number">5.1.</span> <span class="toc-text">信道划分介质访问控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机访问介质访问控制"><span class="toc-number">5.2.</span> <span class="toc-text">随机访问介质访问控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轮询访问介质访问控制"><span class="toc-number">5.3.</span> <span class="toc-text">轮询访问介质访问控制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络"><span class="toc-number">6.</span> <span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#局域网"><span class="toc-number">6.1.</span> <span class="toc-text">局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以太网"><span class="toc-number">6.1.1.</span> <span class="toc-text">以太网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#令牌环网"><span class="toc-number">6.1.2.</span> <span class="toc-text">令牌环网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广域网"><span class="toc-number">6.2.</span> <span class="toc-text">广域网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PPP"><span class="toc-number">6.2.1.</span> <span class="toc-text">PPP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDLC协议"><span class="toc-number">6.2.2.</span> <span class="toc-text">HDLC协议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#物理设备"><span class="toc-number">7.</span> <span class="toc-text">物理设备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网桥"><span class="toc-number">7.1.</span> <span class="toc-text">网桥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机"><span class="toc-number">7.2.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网桥与交换机对比"><span class="toc-number">7.3.</span> <span class="toc-text">网桥与交换机对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冲突域与广播域总结"><span class="toc-number">7.4.</span> <span class="toc-text">冲突域与广播域总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">8.</span> <span class="toc-text">参考文献</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

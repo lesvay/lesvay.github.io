@@ -67,13 +67,13 @@ URG(urgent)：紧急，为1时表示有紧急数据，应正确传送。ACK(ackn
         </div>
         <div class="content markdown">
             <h1 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h1><p>当获取IP之后，客户端就会发送一个报文段给服务器，开启三次握手。</p>
-<p><img src="/.io//baowenduan.png" alt="baowenduan"></p>
+<p><img src="/2020/03/14/tcpConnect/baowenduan.png" alt="baowenduan"></p>
 <p>其中确认号下面那个犄角旮旯里：</p>
 <blockquote>
 <p>URG(urgent)：紧急，为1时表示有紧急数据，应正确传送。<br>ACK(acknowledgement)：确认，为1时确认字号才有效，一旦TCP连接建立，就必须把ACK置为1。<br>PSH(push)：传送，为1时表示尽快交付，不必把整个缓存都填满后再交付。<br>RST(reset)：重置，为1时表示连接中出现严重差错，必须释放连接，重新建立。<br>SYN(synchronous)：建立联机，为1时表示这是一个连接请求或连接接受报文。<br>FIN(finish)：结束，为1时表示此报文段的发送端的数据已发送完毕，要求释放传输连接。</p>
 <p>Sequence number(seq)：顺序号码<br>Acknowledge number(ack)：确认号码</p>
 </blockquote>
-<p><img src="/.io//sanciwoshou.png" alt="sanciwoshou"></p>
+<p><img src="/2020/03/14/tcpConnect/sanciwoshou.png" alt="sanciwoshou"></p>
 <p><a href="https://www.bilibili.com/video/av52745283?from=search&seid=12199868811481081570" target="_blank" rel="noopener">图片来源：B站-计算机网络第36讲</a></p>
 <p>三次握手功能如下：</p>
 <blockquote>
@@ -85,14 +85,14 @@ URG(urgent)：紧急，为1时表示有紧急数据，应正确传送。ACK(ackn
 <p>客户端：服大大，我要发数据给你哇，你快来接收啦。<br>客户端：（？？？没收到？再来一次）<br>客户端：服大大，我要发数据给你哇，你快来接收啦。<br>服务器：好的，老客你发吧。<br>服务器：（？？？怎么不回我，可能又丢包了，那再发一次吧）<br>服务器：好的，老客你发吧。<br>客户端：嗯嗯，那我发了。<br>服务器：（收到了老客的回复，说明我们的TCP连接已经建立）<br>客户端：（不管服大大有没有收到这条消息，我都认为我们的TCP连接已经建立）</p>
 </blockquote>
 <p>当然这也只是比较理想的一种情况，现实中这些传递的包可能会卡在路上过了很久之后才传过来，这个时候很有可能客户端与服务器都传输完数据了。如果只有两次握手的话，那么很有可能会再次唤起服务器，造成资源的浪费。  </p>
-<p><img src="/.io//erciwoshou.png" alt="erciwoshou"></p>
+<p><img src="/2020/03/14/tcpConnect/erciwoshou.png" alt="erciwoshou"></p>
 <p><a href="https://www.bilibili.com/video/av52745283?from=search&seid=12199868811481081570" target="_blank" rel="noopener">图片来源：B站-计算机网络第36讲</a></p>
 <blockquote>
 <p>客户端：服大大，我要发数据给你哇，你快来接收啦。（1）<br>客户端：（？？？没收到？再来一次）<br>客户端：服大大，我要发数据给你哇，你快来接收啦。（2）<br>服务器：好的，老客你发吧。（2）<br>客户端与服务器开心的发完数据，并且关闭了连接。<br>服务器：你怎么又来了？（1）<br>服务器建立连接（1）<br>服务器等待客户端传输请求（1）<br>服务器：我等（1）<br>服务器：我等（1）<br>服务器：我等等等（1）<br>……<br>服务器：？？……？？（1）<br>服务器亡（1）</p>
 </blockquote>
 <h1 id="传输数据"><a href="#传输数据" class="headerlink" title="传输数据"></a>传输数据</h1><p>握手成功后，开始传输数据，数据被分为多个分节，一次数据的传输需要2个TCP包。数据发送包，接收方应答包。</p>
 <p>如果已经建立了连接，客户端突然出现故障。TCP设有一个保活计时器，服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
-<h1 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h1><p><img src="/.io//sicihuishou.png" alt="sicihuishou"></p>
+<h1 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h1><p><img src="/2020/03/14/tcpConnect/sicihuishou.png" alt="sicihuishou"></p>
 <p><a href="https://www.bilibili.com/video/av52745283?from=search&seid=12199868811481081570" target="_blank" rel="noopener">图片来源：B站-计算机网络第36讲</a></p>
 <blockquote>
 <p>客户端发完数据<br>客户端：服大大，我数据发完了。(停止发送数据，进入终止等待1状态)<br>服务器：好的，我知道了。(进入关闭等待状态)<br>客户端收到回复进入终止等待2状态<br>服务器发完数据<br>服务器：老客啊，我也发完了。(进入最后确认状态)<br>客户端接收完数据：好的。(客户端进入时间等待状态，服务器进入CLOSED状态)<br>2*MSL(最长报文段寿命Maximum Segment Lifetime)时间后，客户端进入CLOSED状态。</p>

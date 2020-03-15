@@ -14,12 +14,646 @@
   <entry>
     <title>传输层相关知识点</title>
     <url>/2020/03/15/netTransportLayer/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>应用对应用、进程对进程</li>
+<li>单位：(segments段)报文段TCP、用户数据报UDP</li>
+<li>任务：负责主机中两个进程之间的通信</li>
+<li>功能<ul>
+<li>为端到端连接提供可靠的传输服务</li>
+<li>为端到端连接提供流量控制、差错控制、服务质量等管理服务</li>
+<li>提供应用进程间的逻辑通信</li>
+<li>差错检测</li>
+<li>提供无连接和面向连接的服务</li>
+<li>复用和分用</li>
+<li>单独TCP的有：连接管理、流量控制与拥塞控制</li>
+</ul>
+</li>
+</ul>
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>传输层按端口号寻址，类似数据链路层按mac，网络层按ip</p>
+<p>熟知端口号：0~1023</p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FTP</td>
+<td>21,20</td>
+</tr>
+<tr>
+<td>TELNET</td>
+<td>23</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>53</td>
+</tr>
+<tr>
+<td>TFTP</td>
+<td>69</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>161</td>
+</tr>
+</tbody></table>
+<p>登记端口号：1024~49151（为没有熟知端口号的程序使用、须在IANA登记）</p>
+<p>客户端端口或短暂端口：49152~65535</p>
+<p>套接字：（主机IP地址，端口号）唯一标识了网络中的某台主机上的某个应用进程</p>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>传输数据前无需建立连接，数据到达后也无需确认</li>
+<li>不可靠交付</li>
+<li>报文头部短，传输开销小，时延较短</li>
+<li>不需维持复杂的连接状态表</li>
+<li>用户数据报只有8个字节的首部开销</li>
+<li>网络拥塞不会使源主机的发送速率降低</li>
+<li>支持一对一、一对多、多对多、多对一的交互通信</li>
+</ul>
+<h2 id="数据包组成"><a href="#数据包组成" class="headerlink" title="数据包组成"></a>数据包组成</h2><p>源端口、目的端口、长度、校验和</p>
+<h2 id="UDP校验"><a href="#UDP校验" class="headerlink" title="UDP校验"></a>UDP校验</h2><ul>
+<li>只提供差错校验，计算校验时在用户数据报之前加上12B的伪首部</li>
+<li>伪首部包括源IP地址字段、目的IP地址字段、全0字段、协议字段、UDP长度字段</li>
+<li>伪首部只用于验证校验和，既不向下传送，也不向上传递</li>
+<li>二进制反码运算求和，无差错时其结果全为1<ul>
+<li>从低位到高位逐列运算</li>
+<li>0+0=0 1+0=1 1+1=0进1</li>
+<li>最高位产生进位，最后结果加1</li>
+</ul>
+</li>
+</ul>
+<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>面向连接，不提供广播或多播服务</li>
+<li>可靠交付</li>
+<li>报文段头部长，传输开销大</li>
+</ul>
+<h2 id="报文段组成"><a href="#报文段组成" class="headerlink" title="报文段组成"></a>报文段组成</h2><p><img src="/2020/03/15/netTransportLayer/baowenduan.png" alt="baowenduan"></p>
+<h2 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h2><ul>
+<li>两个套接字：{socket1，socket2}={(IP1:port1),(IP2:port2)}</li>
+<li>三次握手</li>
+<li>四次释放</li>
+</ul>
+<h2 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h2><p>TCP数据编号与确认</p>
+<ul>
+<li>将传送的报文看成是字节组成的数据流，每个字节对应一个序号</li>
+<li>建立连接时双方要商定初始序号，报文首部中的序号字段数值，表示该报文段中的数据部分的第一个 字节的序号</li>
+<li>确认是对接收到的数据最高序号表示确认</li>
+<li>接收端返回的序号是已收到的数据最高序号加1，表示接收端期望下次收到的数据中第一个数据字节的序号</li>
+</ul>
+<p>TCP的重传机制</p>
+<ul>
+<li>每发送一个报文段，就对设置一次计时器，如果规定时间内没有收到确认，就重传该报文</li>
+<li>计算超时计时器的重传时间<ul>
+<li>RTT<ul>
+<li>记录每个报文段发出的时间以及收到相应的确认报文段的时间，这两个时间之差就是报文段的往返时延</li>
+<li>将各报文段的往返时延样本加权平均，就得出报文段的平均往返时延RTT</li>
+<li>每侧量到一个新的往返时延样本，就按下式重新计算一次平均往返时延RTT=(1-a)<em>(旧的RTT)+a</em>(新的往返时延样本)</li>
+<li>超时重传时间ROT:新的(ROT)=b*(RTT)</li>
+</ul>
+</li>
+<li>Karn<ul>
+<li>新的(ROT)=c*旧的(ROT)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><ul>
+<li>利用滑动窗口控制实现流量控制</li>
+<li>TCP为每个报文设有一个持续计数器，只要收到对方的零窗口通知就启动持续计时器，时间到就发送一个零窗口探测报文段，对方在探测这个报文段时就给出了现在的窗口值，若是零就重新计时，若不是就打破死锁僵局</li>
+<li>三种机制<ul>
+<li>TCP维持一个变量，等于最大报文段长度MSS，只要缓存中存放的数据达到MSS字节时，就组装成一个TCP报文段发送出去</li>
+<li>由发送方应用进程指名要求发送报文段，即TCP的推动Push操作</li>
+<li>发送方的一个计时器期限到了，就把已有的缓存数据装入报文段，但长度不超过MSS并发送出去</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/03/15/netTransportLayer/liuliangkongzhi.jpg" alt="图片-流量控制"></p>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>目的：使网络能够承受现有的网络负荷</li>
+<li>是一个全局过程，涉及所有主机路由器以及与降低网络传输性能有关的所有因素</li>
+<li>指给定发送端和接收端之间的点对点通信量的控制</li>
+<li>分组丢失是网络发生拥塞的征兆而不是原因</li>
+<li>拥塞本身成为引起网络性能恶化甚至发生死锁的原因</li>
+</ul>
+<h3 id="控制分类"><a href="#控制分类" class="headerlink" title="控制分类"></a>控制分类</h3><table>
+<thead>
+<tr>
+<th>控制分类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>闭环控制</td>
+<td>事先将有关发生拥塞的因素考虑周到，力求网络在工作中不发生拥塞</td>
+</tr>
+<tr>
+<td>开环控制</td>
+<td>监测网络系统以便检测到拥塞何时何处发生、将拥塞发生的信息传送到可采取行动的地方、调整网络的运行以解决问题</td>
+</tr>
+</tbody></table>
+<h3 id="四种算法"><a href="#四种算法" class="headerlink" title="四种算法"></a>四种算法</h3><p>TCP要求发送端维护两个窗口</p>
+<ul>
+<li>接收端窗口rwnd：接收端根据其目前接受缓存大小所需诺的最新窗口值，反映了接收端的容量，有接收端将其放在报文首部的字段通知发送端</li>
+<li>拥塞窗口cwnd：发送端根据自己估计的网络拥塞程度而设置的窗口值，反映了网络的当前容量</li>
+<li>rwnd&lt;cwnd时：发送窗口的上限值是接受方的接受能力限制发送窗口的最大值</li>
+<li>rwnd&gt;cwnd时：发送窗口的上限值是网络拥塞限制发送窗口的最大值</li>
+</ul>
+<h4 id="慢开始算法"><a href="#慢开始算法" class="headerlink" title="慢开始算法"></a>慢开始算法</h4><ul>
+<li><p>开始发送报文段时先设置cwnd=1，即设置最大报文段长度MSS的数值</p>
+</li>
+<li><p>每收到一个对新的报文段的确认后，将拥塞窗口加1，即增加一个MSS的数值</p>
+</li>
+</ul>
+<p><img src="/2020/03/15/netTransportLayer/mankaishi.jpg" alt="图片-慢开始算法"></p>
+<h4 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h4><ul>
+<li><p>慢开始门限ssthresh</p>
+</li>
+<li><p>TCP连接进行初始化时，拥塞窗口cwnd=1，慢开始门限初始值设为16个字节ssthresh=16，发送端不能超过拥塞窗口cwnd和接收端窗口rwnd的最小值</p>
+</li>
+<li><p>执行慢开始算法，cwnd=1，发送第一个报文段M0</p>
+</li>
+<li><p>发送端每收到一个确认，cwnd++，cwnd=2，发送端接着发送M1M2</p>
+</li>
+<li><p>发送端收到两个确认，cwnd+=2，cwnd=4，发送端接着可以发四个M</p>
+</li>
+<li><p>如此按指数增长</p>
+</li>
+<li><p>当cwnd==ssthresh时，改为执行拥塞避免算法 ，是线性增长的</p>
+</li>
+<li><p>假定拥塞窗口增长到24时，网络出现超时，表明网络拥塞了</p>
+</li>
+<li><p>ssthresh变为发送窗口数值的一半，为12，cwnd=1，并执行慢开始算法</p>
+</li>
+<li><p>当cwnd==ssthresh时执行拥塞避免算法</p>
+</li>
+</ul>
+<p><img src="/2020/03/15/netTransportLayer/yongsebimian.jpg" alt="图片-拥塞避免"></p>
+<h4 id="快重传算法"><a href="#快重传算法" class="headerlink" title="快重传算法"></a>快重传算法</h4><ul>
+<li><p>要求接收方每收到一个失序的报文段后就立即发出重复确认</p>
+</li>
+<li><p>只要发送方收到三个重复确认就应当立即重传对方尚未收到的报文段</p>
+</li>
+</ul>
+<p><img src="/2020/03/15/netTransportLayer/kuaichongchuan.jpg" alt="图片-快重传"></p>
+<h4 id="快恢复算法"><a href="#快恢复算法" class="headerlink" title="快恢复算法"></a>快恢复算法</h4><ul>
+<li><p>当发送方收到3个重复的确认时，就执行乘法减小，把慢开始门限ssthresh设置为当前拥塞窗口的一半，接下去不执行慢开始算法</p>
+</li>
+<li><p>由于发送方现在认为网络很可能没有发生拥塞，所以不执行慢开始算法，而是将ssthresh设置为当前拥塞窗口的一半，然后开始执行拥塞避免算法</p>
+</li>
+</ul>
+<p><img src="/2020/03/15/netTransportLayer/kuaihuifu.jpg" alt="图片-快恢复"></p>
+]]></content>
       <categories>
         <category>计算机网络</category>
       </categories>
       <tags>
         <tag>transportLayer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络层相关知识点</title>
+    <url>/2020/03/15/netNetworkLayer/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>主机对主机</li>
+<li>单位：Packets包：数据报</li>
+<li>硬件：路由器</li>
+<li>任务：将传输层传下来的报文段封装成分组，选择适当的路由，是传输层传下来的分组能够交付到目的主机</li>
+<li>功能<ul>
+<li>为传输层提供服务</li>
+<li>组包和拆包</li>
+<li>路由选择：确定进来的分组应该被传送到哪一条路线上</li>
+<li>分组转发：将IP数据报从适合的端口转发出去</li>
+<li>拥塞控制：开环控制、闭环控制</li>
+<li>异构网络互连：各种网络协议不同，但是让用户看起来是一个整体</li>
+</ul>
+</li>
+<li>协议：ICMP、ARP、RARP、IP、IGMP</li>
+</ul>
+<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2><h3 id="数据报"><a href="#数据报" class="headerlink" title="数据报"></a>数据报</h3><ul>
+<li>总长度：数据包的总长是MAC地址数据部分，1500B，如果超出则分片</li>
+<li>标志：MF合并数据报、DF=1不可以分片，当数据报过大时，返回ICMP告知最大传输单位、DF=0可以分片传输</li>
+</ul>
+<h3 id="地址分类"><a href="#地址分类" class="headerlink" title="地址分类"></a>地址分类</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>地址</th>
+<th>私有地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网络号</td>
+<td>0.0.0.0</td>
+<td>\</td>
+</tr>
+<tr>
+<td>广播地址</td>
+<td>255.255.255.255</td>
+<td>\</td>
+</tr>
+<tr>
+<td>A类</td>
+<td>1.0.0.0~126.255.255.255</td>
+<td>10.0.0.0~10.255.255.255</td>
+</tr>
+<tr>
+<td>B类</td>
+<td>128.1.0.0~191.255.255.255</td>
+<td>172.16.0.0~172.31.255.255</td>
+</tr>
+<tr>
+<td>C类</td>
+<td>192.0.1.0~223.255.255.255</td>
+<td>192.168.0.0~192.168.255.255</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>特殊地址</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网络地址</td>
+<td></td>
+</tr>
+<tr>
+<td>直接广播地址</td>
+<td>主机号全为1，该组所有主机都会收到，只能做目的地址</td>
+</tr>
+<tr>
+<td>受限广播地址</td>
+<td>全1，用于定义当前网络</td>
+</tr>
+<tr>
+<td>这个网络上的这个主机</td>
+<td>全0，主机为了发现自己的IP地址，使用全0作为源地址，全1作为目的地址</td>
+</tr>
+<tr>
+<td>这个网络上的特定主机</td>
+<td>用于某个主机向同一网络上的其他主机发送报文</td>
+</tr>
+<tr>
+<td>回环地址</td>
+<td>127开头，用来测试机器的软件，客户机进程用回环地址给同样机器上的服务器进程发送请求</td>
+</tr>
+</tbody></table>
+<h3 id="NAT-内外网转换"><a href="#NAT-内外网转换" class="headerlink" title="NAT(内外网转换)"></a>NAT(内外网转换)</h3><ul>
+<li>节省IP地址</li>
+<li>隐藏内部真实IP</li>
+<li>TCP负载均衡</li>
+<li>两网合并，解决内网地址冲突问题</li>
+</ul>
+<h3 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h3><p>子网划分</p>
+<ul>
+<li>由两级变为三级</li>
+<li>IP地址：{&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;}</li>
+</ul>
+<p>子网掩码</p>
+<ul>
+<li>用子网掩码表示网络号长度</li>
+</ul>
+<h3 id="CIDR无分类编址"><a href="#CIDR无分类编址" class="headerlink" title="CIDR无分类编址"></a>CIDR无分类编址</h3><p>IP地址：{&lt;网络前缀&gt;,&lt;主机号&gt;}，类似于子网掩码</p>
+<h3 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h3><ul>
+<li>解决同一局域网主机或路由器IP地址和硬件地址的映射问题</li>
+<li>每个主机中都有ARP高速缓存，用来存放所有局域网上的各主机和路由器的IP地址到硬件地址的映射表</li>
+<li>ARP请求分组是广播发送的，响应分组是普通的单播</li>
+<li>四种情况<ul>
+<li>发送方是主机or路由器，要把IP数据报发送到本网络上的主机，这时用ARP找到目的主机的硬件地址</li>
+<li>发送方是主机or路由器，要把IP数据报发送到另一个网络上的主机，这时用ARP找到本网络上的一个路由器的硬件地址，然后交给路由器</li>
+</ul>
+</li>
+</ul>
+<h3 id="DHCP动态主机配置协议"><a href="#DHCP动态主机配置协议" class="headerlink" title="DHCP动态主机配置协议"></a>DHCP动态主机配置协议</h3><ul>
+<li>动态分配IP地址</li>
+<li>允许一台计算机加入新的网络获取IP地址，不需要手工参与</li>
+<li>是应用层协议，使用UDP传输</li>
+<li>分配的IP地址是临时的，只能在一段时间内（租用期）使用</li>
+</ul>
+<p>过程</p>
+<ul>
+<li>DHCP客户机广播“DHCP发现”消息，试图找到网络中的DHCP服务器，服务器获取一个IP地址</li>
+<li>DHCP服务器收到“DHCP发现”消息，就向网络提供“DHCP提供”消息，其中包括提供DHCP客户机的IP地址和相关配置信息</li>
+<li>DHCP客户机收到“DHCP提供”消息，如果接收DHCP提供的相关参数，则广播“DHCP请求”消息向DHCP服务器请求提供IP地址</li>
+<li>DHCP服务器广播“DHCP确认”消息，分配IP地址给DHCP客户机</li>
+<li>当有多个客户机请求时，DHCP通常选择最先到达的信息</li>
+</ul>
+<h3 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h3><p>差错报告报文</p>
+<table>
+<thead>
+<tr>
+<th>差错报告报文</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>终点不可达</td>
+<td>路由或主机不能交付数据时，使源点知道终点不可达</td>
+</tr>
+<tr>
+<td>源站抑制</td>
+<td>路由或主机由于拥塞而丢弃数据报时，向源点发送，使源点发送速率变慢</td>
+</tr>
+<tr>
+<td>时间超时</td>
+<td>当IP分组TTL值被减为0后，路由器除了要丢弃该分组还要向源点发送时间超时；当终点在预先规定的时间内不能收到一个数据报的全部数据报片时，向源点发送时间超时</td>
+</tr>
+<tr>
+<td>参数问题</td>
+<td>路由器或目的主机收到的数据报的首部中有字段的值不正确时，就丢弃该数据报，并向源点发送，现在一般不发</td>
+</tr>
+<tr>
+<td>改变路由</td>
+<td>重定向，路由器把改变路由报文发送给主机，让主机知道下次应将数据报发送给其他的路由器</td>
+</tr>
+</tbody></table>
+<p>询问报文</p>
+<ul>
+<li>有回送请求和回答报文</li>
+<li>时间戳请求和回答报文</li>
+<li>掩码地址请求和回答报文</li>
+<li>路由器询问和通告报文</li>
+</ul>
+<p>不发送报告的几种情况</p>
+<ul>
+<li>对ICMP差错报告报文不再发送ICMP差错报告报文</li>
+<li>对第一分片的数据报片的所有后续数据报片都不发送ICMP差错报告报文</li>
+<li>对具有组播地址的数据报片都不发送ICMP差错报告报文</li>
+<li>对具有特殊地址的数据报片（127.0.0.0或0.0.0.0）不发送ICMP差错报告报文</li>
+</ul>
+<h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><p>特点</p>
+<ul>
+<li>128位</li>
+<li>十六进制表示，四个一位用冒号隔开，四个全0可写为一个0，连着几个冒号都是0，可不写，但要确定个数只能出现一次</li>
+<li>划分层次多</li>
+<li>首部格式灵活：减少为8个段，更快处理分组，改善吞吐率</li>
+<li>改进的选项：以前必要的现在可选了，加快分组处理速度</li>
+<li>允许协议继续扩充</li>
+<li>支持即插即用</li>
+<li>支持资源的预分配</li>
+</ul>
+<p>三种地址类型：单播、组播、广播</p>
+<h1 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h1><table>
+<thead>
+<tr>
+<th>路由算法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>动态路由</td>
+<td>自动学习</td>
+</tr>
+<tr>
+<td>静态路由</td>
+<td>手动配置</td>
+</tr>
+</tbody></table>
+<h2 id="内部网关协议IGP"><a href="#内部网关协议IGP" class="headerlink" title="内部网关协议IGP"></a>内部网关协议IGP</h2><p>一个自治系统内部所使用的路由选择协议称为内部网关协议IGP，路由选择称为域内路由选择，具体协议有RIP、OSPF。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>RIP</th>
+<th>OSPF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>算法</td>
+<td>距离-向量路由算法</td>
+<td>链路状态路由算法</td>
+</tr>
+<tr>
+<td>协议参数</td>
+<td>用于表示目的网络远近的参数为跳数，即到达目的网络所经过的路由器个数，最大为15</td>
+<td>表示的目的网络的数为虚拟值，与链路的带宽相等，不受物理跳数的限制，适合大型网络</td>
+</tr>
+<tr>
+<td>收敛速度</td>
+<td>将整个路由表作为路由信息广播至网络中，周期为30s，占用资源，影响收敛</td>
+<td>路由信息比较少，广播非周期性，收敛效果好</td>
+</tr>
+<tr>
+<td>分层</td>
+<td>网络是平面概念，无区域或边界的定义</td>
+<td>网络或自治系统可以划分很多区域，每个区域通过OSPF边界路由相连</td>
+</tr>
+<tr>
+<td>负载平衡</td>
+<td>只安装一条路径传输数据</td>
+<td>同一个目的网络有多条相同代价的路径，可以将通信量分配给这几条路径</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>无</td>
+<td>对不同链路根据IP分组不同服务类型而设置不同代价</td>
+</tr>
+<tr>
+<td></td>
+<td>不以组播地址发送报文</td>
+<td>以组播地址发送报文</td>
+</tr>
+<tr>
+<td></td>
+<td>采用跳数作为距离的代价</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>将一个自治系统再划分为若干更小的范围，成为区域。</td>
+</tr>
+<tr>
+<td></td>
+<td>是被动的，基于谣言的，靠邻居路由判断，仅和邻居交换信息</td>
+<td>是独立决策的，会主动测试所有邻接节点的状态，定期的将链路状态传播给其他所有节点，说明本路由器和哪些路由器相邻以及该链路的度量</td>
+</tr>
+<tr>
+<td></td>
+<td>交换的信息是当前本路由器所知道的信息，即自己的路由表，并按照固定的时间交换路由信息</td>
+<td>使用洪泛法，通过所有输出端口向所有邻接路由，发送的信息是本路由器相邻的所有路由的链路状态，但只是路由器所知道的部分信息。只有链路状态都发生变化时，路由器才用洪泛法向所有路由器发送信息</td>
+</tr>
+</tbody></table>
+<h3 id="RIP距离矢量选择协议"><a href="#RIP距离矢量选择协议" class="headerlink" title="RIP距离矢量选择协议"></a>RIP距离矢量选择协议</h3><ul>
+<li><p>先修改此RIP报文中所有项目，把下一跳字段中的地址都改为X，并把所有距离字段+1</p>
+</li>
+<li><p>对修改后的RIP报文中的每一个项目执行如图操作</p>
+<p><img src="/2020/03/15/netNetworkLayer/rip.jpg" alt="图片-RIP执行过程"></p>
+</li>
+<li><p>若3min还没收到相邻路由器的更新路由表则把相邻路由器记为不可达路由，记为16，若120s后仍未收到更新的报文，则删除</p>
+</li>
+</ul>
+<p>报文格式：首部、路由</p>
+<p>优点：简单、开销小、收敛过程较快</p>
+<p>缺点</p>
+<ul>
+<li>RIP限制了网络的规模，它能使用的最大距离为15</li>
+<li>路由器之间交换的路由信息是路由器中的最完整路由表，随网络规模增加，开销也增加</li>
+<li>当网络出现故障时，经过较长的时间才能将此信息传送到所有的路由器，即坏消息传播的慢，更新过程的收敛时间长</li>
+</ul>
+<h3 id="OSPF链路状态协议"><a href="#OSPF链路状态协议" class="headerlink" title="OSPF链路状态协议"></a>OSPF链路状态协议</h3><table>
+<thead>
+<tr>
+<th>分组类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>问候分组</td>
+<td>发现和维持邻站的可达性</td>
+</tr>
+<tr>
+<td>数据库描述分组</td>
+<td>向邻站给出自己的链路状态数据库中的所有链路状态项目的摘要信息</td>
+</tr>
+<tr>
+<td>链路状态请求分组</td>
+<td>向对方请求某些链路的详细信息</td>
+</tr>
+<tr>
+<td>链路状态更新分组</td>
+<td>用洪泛法对全网更新链路状态</td>
+</tr>
+<tr>
+<td>链路状态确认分组</td>
+<td>对链路更新分组的确认</td>
+</tr>
+</tbody></table>
+<h2 id="外部网关协议EGP"><a href="#外部网关协议EGP" class="headerlink" title="外部网关协议EGP"></a>外部网关协议EGP</h2><p>自治系统之间使用的路由选择协议成为外部网关协议EGP，路由选择成为域间路由选择</p>
+<h2 id="边界网关协议BGP"><a href="#边界网关协议BGP" class="headerlink" title="边界网关协议BGP"></a>边界网关协议BGP</h2><ul>
+<li>不同自治系统之间交换路由信息的协议</li>
+<li>路径向量路由选择协议</li>
+<li>寻找一条相对来说比较好的路由</li>
+<li>特点<ul>
+<li>交换路由信息的节点数量级是自治系统数的量级，比自治系统中的网络数少很多</li>
+<li>每一个自治系统中BGP发言人的数目很少，系统不过分复杂</li>
+<li>支持CIDR，其路由表包括目的网络前缀、下一跳路由器、到达该目的网络所要经过的各个自治系统序列</li>
+<li>再BGP刚运行时，BGP的邻站是交换整个的BGP路由表，但以后只需在变化部分更新</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>报文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>打开报文</td>
+<td>用来与相邻的另一个BGP发言人建立关系</td>
+</tr>
+<tr>
+<td>更新报文</td>
+<td>用来发送某一路由信息以及列出要撤销的多条路由</td>
+</tr>
+<tr>
+<td>保活报文</td>
+<td>用来确认打开报文和周期性的证实邻站关系</td>
+</tr>
+<tr>
+<td>通知报文</td>
+<td>用来发送检测到的差错</td>
+</tr>
+</tbody></table>
+<p><img src="/2020/03/15/netNetworkLayer/xieyi.jpg" alt="图片-路由协议"></p>
+<h1 id="IP组播"><a href="#IP组播" class="headerlink" title="IP组播"></a>IP组播</h1><p>需要支持组播协议的路由器，使用D类地址224.0.0.0~239.255.255.255,前缀1110，只能用于目的地址，尽最大努力交付，不提供可靠传输，不产生ICMP，并非所有D类地址都可以组播。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>只在本局域网上进行硬件组播</li>
+<li>在因特网的范围内进行组播</li>
+</ul>
+<h2 id="组播地址换算MAC"><a href="#组播地址换算MAC" class="headerlink" title="组播地址换算MAC"></a>组播地址换算MAC</h2><ul>
+<li>IP地址化为二进制，取最后23位</li>
+<li>第24位为0</li>
+<li>四位一组换为十六进制</li>
+<li>在前面加上固定首部01-00-5E</li>
+</ul>
+<h1 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h1><p>实现权限漫游的功能</p>
+<table>
+<thead>
+<tr>
+<th>功能实体</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>移动节点</td>
+<td>具有永久IP地址的移动节点</td>
+</tr>
+<tr>
+<td>本地代理</td>
+<td>有一个端口与移动节点本地链路相连的路由器，根据移动用户的转交地址，采用隧道技术转交移动节点的数据报</td>
+</tr>
+<tr>
+<td>外部代理</td>
+<td>移动节点的漫游链路上的路由节点，他通知本地用户代理自己的转交地址，是移动节点漫游链路的默认路由器</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>四大技术</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代理搜索</td>
+<td>知道自己是否正在漫游</td>
+</tr>
+<tr>
+<td>申请转交地址</td>
+<td>移动节点到外网时从外代理处得到的临时地址</td>
+</tr>
+<tr>
+<td>登录</td>
+<td>移动节点到达外网的一系列认证、注册、建立隧道的过程</td>
+</tr>
+<tr>
+<td>隧道</td>
+<td>本地代理与外部代理之间建立的双向数据通道</td>
+</tr>
+</tbody></table>
+<p>过程</p>
+<ul>
+<li>移动节点在本地网时，按传统的TCP/IP进行通信</li>
+<li>移动节点漫游到一个外地网络时，仍按使用固定的IP地址进行通信，为了能够收到通信对端发给它的IP分组，移动节点需要向本地代理注册当前的位置地址，这个位置地址就是转交地址，移动IP的转交地址可以是外部代理的地址或动态配置的一个地址</li>
+<li>本地代理收到来自转交地址的注册后，就会构建一条通向转交地址的隧道，将截获的发给移动节点的IP分组通过隧道传送到转交地址处</li>
+<li>在转交地址处解除隧道封装，恢复出原始的IP分组，最后送到移动节点，这样移动节点在外网就能够收到这些送给它的IP分组了</li>
+<li>移动节点在外网通过外网的路由器或者外代理向通信对端发送IP数据报</li>
+<li>当移动节点来到另一个网络时，只需要向本地代理更新注册的转交地址，就可以继续通信了</li>
+<li>当移动节点回到本地网时，移动节点想本地代理注销转交地址，这时移动节点又将使用传统的TCP/IP方式进行通信</li>
+</ul>
+<h1 id="网络层设备，路由器"><a href="#网络层设备，路由器" class="headerlink" title="网络层设备，路由器"></a>网络层设备，路由器</h1><p>路由选择部分：</p>
+<ul>
+<li>核心部件：路由选择处理器</li>
+<li>根据所选定的路由选择协议构造出路由表，同时经常或定期的和相邻路由器交换路由信息不断更新和维护路由表</li>
+</ul>
+<p>分组转发部分</p>
+<ul>
+<li><p>组成：一组输入端口、交换结构、一组输出端口</p>
+</li>
+<li><p>交换方法：通过存储器进行交换、通过总线进行交换、通过互联网络进行交换</p>
+</li>
+<li><p>过程：从输入端口进。查找转发表，或排队等待。进入交换接口。进行缓存，并在数据链路层处理模块中给分组加上数据链路层的首部尾部。交给物理层发送到外部线路。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>networkLayer</tag>
       </tags>
   </entry>
   <entry>
@@ -177,7 +811,7 @@
 </ul>
 <h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h2><h3 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h3><p>工作原理：采用总线拓扑结构，无连接工作方式，不对发送的数据进行编号，也不要求对方发送确认。</p>
 <p>MAC帧如下：</p>
-<p><img src="/2020/03/15/netDataLinkLayer/2020-03-15-netDataLinkLayer%5Cmaczhen" alt="图片-MAC帧"></p>
+<p><img src="/2020/03/15/netDataLinkLayer/maczhen.jpg" alt="图片-MAC帧"></p>
 <ul>
 <li><p>前导码：前同步符、帧开始定界符</p>
 </li>
@@ -254,17 +888,6 @@
       </categories>
       <tags>
         <tag>dataLinkLayer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网络层相关知识点</title>
-    <url>/2020/03/15/netNetworkLayer/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>networkLayer</tag>
       </tags>
   </entry>
   <entry>
@@ -496,20 +1119,25 @@
 <li>交换设备<ul>
 <li>交换机</li>
 <li>路由器</li>
-<li>etc<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3>实现资源共享的软件和工具，如：QQ</li>
+<li>etc</li>
 </ul>
 </li>
 </ul>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p>实现资源共享的软件和工具，如：QQ</p>
 <h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p>一种规则</p>
 <h2 id="工作方式组成"><a href="#工作方式组成" class="headerlink" title="工作方式组成"></a>工作方式组成</h2><h3 id="边缘部分"><a href="#边缘部分" class="headerlink" title="边缘部分"></a>边缘部分</h3><ul>
 <li>组成：所有连接在互联网上供用户直接使用的主机</li>
-<li>作用：通信、资源共享<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h3></li>
+<li>作用：通信、资源共享</li>
+</ul>
+<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h3><ul>
 <li>组成大量的网络和连接这些网络的路由器</li>
 <li>作用：提供连通性和交换服务</li>
 </ul>
 <h2 id="功能组成"><a href="#功能组成" class="headerlink" title="功能组成"></a>功能组成</h2><h3 id="通讯子网"><a href="#通讯子网" class="headerlink" title="通讯子网"></a>通讯子网</h3><ul>
 <li>组成：传输介质、通信设备、响应的网络协议</li>
-<li>作用：提供数据传输、交换和控制能力，实现信息通讯<h3 id="资源子网"><a href="#资源子网" class="headerlink" title="资源子网"></a>资源子网</h3></li>
+<li>作用：提供数据传输、交换和控制能力，实现信息通讯</li>
+</ul>
+<h3 id="资源子网"><a href="#资源子网" class="headerlink" title="资源子网"></a>资源子网</h3><ul>
 <li>组成：主机、终端、各类软件资源和信息资源</li>
 <li>作用：负责全网的数据处理业务，像网络用户提供各种网络资源与服务</li>
 </ul>
@@ -543,7 +1171,9 @@
 </ul>
 <h2 id="使用者"><a href="#使用者" class="headerlink" title="使用者"></a>使用者</h2><ul>
 <li>公用网</li>
-<li>专用网<h2 id="数据交换技术"><a href="#数据交换技术" class="headerlink" title="数据交换技术"></a>数据交换技术</h2></li>
+<li>专用网</li>
+</ul>
+<h2 id="数据交换技术"><a href="#数据交换技术" class="headerlink" title="数据交换技术"></a>数据交换技术</h2><ul>
 <li>电路交换网</li>
 <li>报文交换网</li>
 <li>分组交换网</li>

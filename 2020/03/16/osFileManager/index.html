@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>文件管理 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="负责信息管理，有效支持文件存储、检索和修改，解决文件共享、保密和保护问题
+功能：目录管理、文件操作管理、文件保护
+文件的概念具有文件名的一组相关元素集合，在文件系统中是一个最大的数据单位
+
+
+
+组成,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">文件管理</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">文件管理</h1>
+        <div class="stuff">
+            <span>三月 16, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/fileManager/" rel="tag">fileManager</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>负责信息管理，有效支持文件存储、检索和修改，解决文件共享、保密和保护问题</p>
+<p>功能：目录管理、文件操作管理、文件保护</p>
+<h1 id="文件的概念"><a href="#文件的概念" class="headerlink" title="文件的概念"></a>文件的概念</h1><p>具有文件名的一组相关元素集合，在文件系统中是一个最大的数据单位</p>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据项</td>
+<td>描述某一属性的值</td>
+</tr>
+<tr>
+<td>记录</td>
+<td>属性</td>
+</tr>
+<tr>
+<td>文件</td>
+<td>一组相关信息的集合</td>
+</tr>
+</tbody></table>
+<p>属性：名称、标识符、文件类型、文件位置、文件大小、建立时间、用户标识。</p>
+<h2 id="文件分类"><a href="#文件分类" class="headerlink" title="文件分类"></a>文件分类</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按用途</td>
+<td>系统文件、库文件、用户文件</td>
+</tr>
+<tr>
+<td>按保护级别</td>
+<td>只读文件、读写文件、执行文件、不保护文件</td>
+</tr>
+<tr>
+<td>按信息流向分类</td>
+<td>输入文件、输出文件、输入输出文件</td>
+</tr>
+<tr>
+<td>按数据形式分类</td>
+<td>源文件、目标文件(二进制文件)、可执行文件</td>
+</tr>
+</tbody></table>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li>创建文件</li>
+<li>删除文件</li>
+<li>读文件</li>
+<li>写文件</li>
+<li>截断文件</li>
+<li>设置文件的读写位置</li>
+</ul>
+<h2 id="文件打开关闭操作"><a href="#文件打开关闭操作" class="headerlink" title="文件打开关闭操作"></a>文件打开关闭操作</h2><ul>
+<li>打开文件<ul>
+<li>文件指针</li>
+<li>文件打开计数（多个进程可能会同时打开文件）</li>
+<li>文件磁盘位置</li>
+<li>访问权限</li>
+</ul>
+</li>
+<li>关闭文件</li>
+</ul>
+<h2 id="文件的结构"><a href="#文件的结构" class="headerlink" title="文件的结构"></a>文件的结构</h2><h3 id="文件的逻辑结构"><a href="#文件的逻辑结构" class="headerlink" title="文件的逻辑结构"></a>文件的逻辑结构</h3><p>无结构的流式文件</p>
+<p>有结构的记录式文件</p>
+<ul>
+<li>顺序文件<ul>
+<li>最简单的一种结构</li>
+<li>按长度分：定长记录顺序文件、变长记录顺序文件</li>
+<li>按关键字分：串结构(与关键字顺序无关)、与关键字顺序有关</li>
+<li>优点：存取快，随机访问</li>
+<li>缺点：不会产生外部碎片</li>
+</ul>
+</li>
+<li>索引文件<ul>
+<li>建立一个索引表</li>
+<li>优点：随机访问、易于开销</li>
+<li>缺点：效率低、空间开销大</li>
+</ul>
+</li>
+<li>索引顺序文件：为顺序结构分组，每组第一个建立索引表</li>
+<li>直接文件、散列文件：关键字值决定物理地址</li>
+</ul>
+<h3 id="文件的物理结构"><a href="#文件的物理结构" class="headerlink" title="文件的物理结构"></a>文件的物理结构</h3><ul>
+<li>连续分配</li>
+<li>链接分配</li>
+<li>索引分配</li>
+</ul>
+<h2 id="目录的结构"><a href="#目录的结构" class="headerlink" title="目录的结构"></a>目录的结构</h2><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>实现按名存取</li>
+<li>提高检索速度</li>
+<li>允许文件同名：通过不同工作目录加以区分</li>
+<li>允许文件共享</li>
+</ul>
+<h3 id="文件控制块"><a href="#文件控制块" class="headerlink" title="文件控制块"></a>文件控制块</h3><ul>
+<li>文件名</li>
+<li>文件的结构：逻辑结构是记录式（否定长、记录长度、个数）还是流式，物理结构是什么</li>
+<li>文件的物理位置</li>
+<li>存取控制信息：用户的权限</li>
+<li>管理信息</li>
+</ul>
+<h3 id="索引节点"><a href="#索引节点" class="headerlink" title="索引节点"></a>索引节点</h3><ul>
+<li>将文件名与文件描述信息分开</li>
+<li>文件目录由文件名和指向具体文件的指针</li>
+<li>磁盘索引节点：文件主标识符、文件类型、文件存取权限、文件物理地址、文件长度、文件连接计数、文件存取时间</li>
+<li>内存索引节点：磁盘索引节点、索引节点编号、状态、访问计数、逻辑设备号、链接指针</li>
+</ul>
+<h3 id="单级目录结构"><a href="#单级目录结构" class="headerlink" title="单级目录结构"></a>单级目录结构</h3><ul>
+<li>只建立一张用户表</li>
+<li>不允许重名</li>
+<li>查找效率慢</li>
+</ul>
+<h3 id="二级目录结构"><a href="#二级目录结构" class="headerlink" title="二级目录结构"></a>二级目录结构</h3><ul>
+<li>主文件目录：系统中各个用户文件目录的情况</li>
+<li>用户文件目录：每个用户单独一个目录</li>
+</ul>
+<h3 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h3><ul>
+<li>第一级目录为根目录</li>
+<li>非叶子节点为目录</li>
+<li>叶子节点为文件</li>
+<li>引入路径名\，当前目录..表示给的目录的父目录</li>
+</ul>
+<h3 id="图形结构"><a href="#图形结构" class="headerlink" title="图形结构"></a>图形结构</h3><ul>
+<li>方便共享</li>
+<li>每增加一个共享链时计数器+1，删除一个共享链计时器-1，当计数器为0时才删除文件</li>
+</ul>
+<h2 id="文件的共享"><a href="#文件的共享" class="headerlink" title="文件的共享"></a>文件的共享</h2><ul>
+<li>节省大量的外存空间和主存空间</li>
+<li>共享动机<ul>
+<li>相互协作共同完成任务</li>
+<li>远程计算机之间需要通信，需要远程文件系统的共享功能</li>
+</ul>
+</li>
+<li>共享方式<ul>
+<li>基于索引节点的共享方式（硬链接）：不同目录的文件指针指向同一文件</li>
+<li>利用符号链实现文件共享（软连接）：只有所有者才有指针，其他用户只有路径名</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件的保护"><a href="#文件的保护" class="headerlink" title="文件的保护"></a>文件的保护</h2><ul>
+<li>访问类型（读写增加删除执行等）</li>
+<li>访问控制：访问控制矩阵、访问控制表、用户权限表、密码与口令</li>
+</ul>
+<h1 id="文件系统的实现"><a href="#文件系统的实现" class="headerlink" title="文件系统的实现"></a>文件系统的实现</h1><h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><ul>
+<li>用户接口（cmd等）</li>
+<li>文件目录系统</li>
+<li>存取控制验证（权限）</li>
+<li>逻辑文件系统与文件信息缓冲区（获取文件的逻辑地址）</li>
+<li>物理文件系统（获取文件的物理地址）</li>
+</ul>
+<h2 id="目录的实现"><a href="#目录的实现" class="headerlink" title="目录的实现"></a>目录的实现</h2><ul>
+<li>线性表</li>
+<li>散列表</li>
+</ul>
+<h2 id="文件的实现"><a href="#文件的实现" class="headerlink" title="文件的实现"></a>文件的实现</h2><p>外存分配方式</p>
+<ul>
+<li><p>连续分配</p>
+</li>
+<li><p>链接分配</p>
+<ul>
+<li>隐式分配：指针放在每一个物理块中</li>
+<li>显示分配：指针放在内存的一张链接表中</li>
+</ul>
+</li>
+<li><p>索引分配</p>
+<ul>
+<li>单级索引分配</li>
+<li>两级索引分配</li>
+<li>混合索引分配：既采用直接地址，也使用单级或两级索引分配</li>
+</ul>
+</li>
+<li><p>文件存储空间管理</p>
+<ul>
+<li>空闲文件表<ul>
+<li>将一个连续空闲区看作一个文件</li>
+<li>若请求等于块数则全部分配</li>
+<li>请求小于块数则部分留下</li>
+</ul>
+</li>
+<li>空闲块链表：把所有空闲区域链起来，分配时一次从头开始</li>
+<li>位示图法：1表示已分配，0表示未分配，分配时按照需要找到一组值为0的二进制</li>
+<li>成组链接法：<ul>
+<li>所有空闲区按每组100块分成若干组，所有盘号记录到前一组中，形成堆栈</li>
+<li>分配空闲盘块的方法<ul>
+<li>先查找第一组的盘块数，</li>
+<li>若不止一块则将超级盘块中的空闲盘块数减一，将栈顶的盘块分配出去</li>
+<li>若只剩一块且盘块号不是标记结束的0，则将该块的内容读入超级块中，将该块分配出去</li>
+<li>若是0，则分配失败</li>
+</ul>
+</li>
+<li>回收空闲盘块的方法<ul>
+<li>若第一个不满100块，则只要在超级块的栈顶放入该空闲盘块的块号，并将磁盘块数+1</li>
+<li>若已经有100块了，则先将第一组的盘块数和盘块号写入该空闲磁盘块中，再将盘块数=1，栈顶块号=该空闲盘口块号写入超级块中，原来第一组变为第二组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="磁盘组织与管理"><a href="#磁盘组织与管理" class="headerlink" title="磁盘组织与管理"></a>磁盘组织与管理</h1><h2 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h2><p>柱面号、磁头号、扇区号</p>
+<h2 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h2><ul>
+<li>引导控制块（分区的第一块，没有操作系统则为空）</li>
+<li>分区控制块（分区信息）</li>
+<li>目录结构</li>
+<li>文件控制块（文件信息）</li>
+</ul>
+<h2 id="访问时间"><a href="#访问时间" class="headerlink" title="访问时间"></a>访问时间</h2><ul>
+<li>访问时间=寻道时间+旋转延迟+传输时间</li>
+<li>寻道时间Ts=m*n+s(m:每移动一个磁道所需时间，s启动磁臂的时间、n移动几条磁道)</li>
+<li>旋转延迟Tr=（1/r）/2（r旋转速度）</li>
+<li>传输时间Tt=b/（rN）</li>
+</ul>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><ul>
+<li>先来先服务算法FCFS：先来先服务</li>
+<li>最短寻道时间优先算法SSTF：离磁头最近</li>
+<li>扫描算法SCAN：</li>
+<li>循环扫描算法C-SCAN：单向移动</li>
+</ul>
+<h2 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h2><ul>
+<li>磁盘格式化：空白盘分区并写入基础信息</li>
+<li>引导块：计算机启动时需要运行初始化程序（自举程序），找到系统内核装入内存，开始操作系统的运行</li>
+<li>坏扇区<ul>
+<li>简单磁盘（IDE）手工处理</li>
+<li>复杂磁盘（SCSI）维护一个磁盘坏块链表</li>
+</ul>
+</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>天勤操作系统</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#文件的概念"><span class="toc-number">1.</span> <span class="toc-text">文件的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件分类"><span class="toc-number">1.1.</span> <span class="toc-text">文件分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本操作"><span class="toc-number">1.2.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件打开关闭操作"><span class="toc-number">1.3.</span> <span class="toc-text">文件打开关闭操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件的结构"><span class="toc-number">1.4.</span> <span class="toc-text">文件的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件的逻辑结构"><span class="toc-number">1.4.1.</span> <span class="toc-text">文件的逻辑结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件的物理结构"><span class="toc-number">1.4.2.</span> <span class="toc-text">文件的物理结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录的结构"><span class="toc-number">1.5.</span> <span class="toc-text">目录的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#功能"><span class="toc-number">1.5.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件控制块"><span class="toc-number">1.5.2.</span> <span class="toc-text">文件控制块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引节点"><span class="toc-number">1.5.3.</span> <span class="toc-text">索引节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单级目录结构"><span class="toc-number">1.5.4.</span> <span class="toc-text">单级目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二级目录结构"><span class="toc-number">1.5.5.</span> <span class="toc-text">二级目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#树形结构"><span class="toc-number">1.5.6.</span> <span class="toc-text">树形结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图形结构"><span class="toc-number">1.5.7.</span> <span class="toc-text">图形结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件的共享"><span class="toc-number">1.6.</span> <span class="toc-text">文件的共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件的保护"><span class="toc-number">1.7.</span> <span class="toc-text">文件的保护</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件系统的实现"><span class="toc-number">2.</span> <span class="toc-text">文件系统的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#层次结构"><span class="toc-number">2.1.</span> <span class="toc-text">层次结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录的实现"><span class="toc-number">2.2.</span> <span class="toc-text">目录的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件的实现"><span class="toc-number">2.3.</span> <span class="toc-text">文件的实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#磁盘组织与管理"><span class="toc-number">3.</span> <span class="toc-text">磁盘组织与管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#物理结构"><span class="toc-number">3.1.</span> <span class="toc-text">物理结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息"><span class="toc-number">3.2.</span> <span class="toc-text">信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问时间"><span class="toc-number">3.3.</span> <span class="toc-text">访问时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度算法"><span class="toc-number">3.4.</span> <span class="toc-text">调度算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘管理"><span class="toc-number">3.5.</span> <span class="toc-text">磁盘管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

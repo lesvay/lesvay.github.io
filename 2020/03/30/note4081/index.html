@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>408刷题笔记1 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="计算机组成原理计算机变化：电子管-&amp;gt;晶体管-&amp;gt;中小规模集成电路-&amp;gt;超大规模集成电路
+微型计算机的发展以微处理器技术为标志
+机器语言是计算机唯一可以执行的语言
+汇编语言采用助记符编写,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">408刷题笔记1</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">408刷题笔记1</h1>
+        <div class="stuff">
+            <span>三月 30, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/408/" rel="tag">408</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><p>计算机变化：电子管-&gt;晶体管-&gt;中小规模集成电路-&gt;超大规模集成电路</p>
+<p>微型计算机的发展以微处理器技术为标志</p>
+<p>机器语言是计算机唯一可以执行的语言</p>
+<p>汇编语言采用助记符编写程序–&gt;助记符（mnemonic）是便于人们记忆、并能描述指令功能和指令操作数的符号，助记符是表明指令功能的英语单词或其缩写。</p>
+<p>边翻译成机器语言边执行–&gt;解释型语言，不会产生目标代码文件</p>
+<p>全部翻译成机器语言再执行–&gt;编译性语言，产生目标代码文件</p>
+<p><img src="/2020/03/30/note4081/cbianyi.png" alt="c编译过程"></p>
+<p>高级语言-&gt;汇编语言：编译</p>
+<p>汇编语言-&gt;机器语言：汇编</p>
+<p>使用二进制主要对应逻辑电路里的高电平和低电平，这是由物理器件的性能决定。</p>
+<p>完整的计算机系统包括配套的硬件设备和软件设备</p>
+<p>硬件设备包括外部设备和主机</p>
+<p>主机包括运算器、存储器和控制器</p>
+<p><img src="/2020/03/30/note4081/fengnuoyiman.png" alt="冯诺依曼计算机"></p>
+<p>冯诺依曼计算机以<strong>运算器</strong>为中心，是单处理机，根本的特征采用<strong>存储程序</strong>原理，基本工作方式是<strong>控制流驱动</strong>方式。</p>
+<p>指令和数据都存在存储器中，冯诺依曼计算机中CPU区分指令和数据的方式是依据指令周期的不同阶段，在取指阶段取的是指令，执行阶段取的是数据。只有CPU确定是指令时才送去译码。</p>
+<p><img src="/2020/03/30/note4081/xiandaijisuanji.png" alt="现代计算机"></p>
+<p>软硬件实现逻辑上等效不等价，软件灵活、硬件高效。</p>
+<p><img src="/2020/03/30/note4081/jisuajineibutu.png" alt="计算机组成框图"></p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALU(Arithmetic logic unit)</td>
+<td>算术逻辑单元</td>
+</tr>
+<tr>
+<td>ACC(Accumulation register)</td>
+<td>累加器</td>
+</tr>
+<tr>
+<td>MQ(Multiplier-Quotient Register)</td>
+<td>乘商寄存器</td>
+</tr>
+<tr>
+<td>X</td>
+<td>操作数寄存器</td>
+</tr>
+<tr>
+<td>IX</td>
+<td>变址寄存器，*运算器中未显示，可不必有</td>
+</tr>
+<tr>
+<td>BR(Buffer Register)</td>
+<td>数据缓冲器：基址寄存器，*运算器中未显示，可不必有</td>
+</tr>
+<tr>
+<td>CU</td>
+<td>控制单元</td>
+</tr>
+<tr>
+<td>IR(Instruction Register)</td>
+<td>指令寄存器：存放当前欲执行的指令</td>
+</tr>
+<tr>
+<td>PC(Program Counter)</td>
+<td>程序计数器：存放下一条指令的地址</td>
+</tr>
+<tr>
+<td>MDR(Data Register)</td>
+<td>数据寄存器：存放从存储单元取来的数据</td>
+</tr>
+<tr>
+<td>MAR(Address Register)</td>
+<td>地址寄存器：存放欲访问的存储单元地址</td>
+</tr>
+<tr>
+<td>Ad(Address)</td>
+<td>形式地址</td>
+</tr>
+<tr>
+<td>ID(Instruction Decoder)</td>
+<td>指令译码器</td>
+</tr>
+<tr>
+<td>AD(Address Decoder)</td>
+<td>地址译码器，一般属于主存</td>
+</tr>
+</tbody></table>
+<p><img src="/2020/03/30/note4081/cunchuti.png" alt="存储体"></p>
+<p>现代计算机中MAR和MDR集成到CPU中</p>
+<p>MAR-&gt;地址码长度，2^n</p>
+<p>MDR-&gt;存储字长，一次可以处理的数据</p>
+<p><img src="/2020/03/30/note4081/yunsuanqi.png" alt="运算器"></p>
+<p><img src="/2020/03/30/note4081/kongzhiqi.png" alt="控制器"></p>
+<p>过程：</p>
+<ul>
+<li>把程序和数据装入主存储器</li>
+<li>从程序的起始地址运行程序</li>
+<li>用程序的首地址从存储器中取出第一条指令，各部件协作执行指令，计算下一条指令地址</li>
+<li>用新的指令地址读第二条指令</li>
+</ul>
+<p>取数据的例子：</p>
+<ul>
+<li>取指令：PC-&gt;MAR-&gt;M-&gt;MDR-&gt;IR</li>
+<li>分析指令：OP(IR)-&gt;CU</li>
+<li>执行指令(取数据)：Ad(IR)-&gt;MAR-&gt;M-&gt;MDR-&gt;ACC</li>
+<li>计算下一条指令：PC+1-&gt;PC</li>
+</ul>
+<p>CPU存取速度：寄存器&gt;Cache(SRAM制造)&gt;内存(DRAM制造)</p>
+<p>数据库系统=数据库+数据库管理系统（系统程序）+应用系统+管理员</p>
+<p>相联存储器既可以按地址寻址也可以按内容寻址（通常是某些字段）</p>
+<p>存储程序原理：将指令以代码的形式实现输入的主存储器中，然后按其在存储器中的首地址执行第一条指令，之后按照顺序执行，直至结束。</p>
+<p>计算机功能：数据传送功能、数据存储功能、数据处理功能、操作控制功能、操作判断功能。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://blog.csdn.net/low5252/article/details/104406148" target="_blank" rel="noopener">CSDN-水无垠</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机组成原理"><span class="toc-number">1.</span> <span class="toc-text">计算机组成原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">2.</span> <span class="toc-text">参考文献</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

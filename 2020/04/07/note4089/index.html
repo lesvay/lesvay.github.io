@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>408刷题笔记9 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="计算机网络网络层的功能异构网络是指传输介质、数据编码方式、链路控制协议以及不同的数据单元格式和转发机制。在物理层和数据链路层定义。
+路由算法由于“好的消息传得快，坏的消息传的慢”路由信息变化时未能及,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">408刷题笔记9</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">408刷题笔记9</h1>
+        <div class="stuff">
+            <span>四月 07, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/408/" rel="tag">408</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a>网络层的功能</h2><p>异构网络是指传输介质、数据编码方式、链路控制协议以及不同的数据单元格式和转发机制。在物理层和数据链路层定义。</p>
+<h2 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h2><p>由于“好的消息传得快，坏的消息传的慢”路由信息变化时未能及时被所有路由器知道，导致慢收敛现象，导致路由接受了无效的信息，从而产生了路由回路问题。</p>
+<p>直接交付：发送方和目的站具有相同的子网地址</p>
+<p>分层路由路由器被划分为区域，仅知道自己所在区域的目标地址。</p>
+<h2 id="IPV4"><a href="#IPV4" class="headerlink" title="IPV4"></a>IPV4</h2><p>协议字段表示使用IP协议的上层协议，6TCP,17UDP</p>
+<p>版本字段表示IP协议的版本，4IPv4，6IPv6</p>
+<p>首部长度以32bit为计数单位，总长度以8bit为计数单位</p>
+<p>片偏移8bit为单位</p>
+<p>127.x.x.x回路测试</p>
+<p>避免无限转发环路分组的方法是设定生命周期TTL</p>
+<p>NAT表项由管理员添加，如果没有就直接不转发丢弃。</p>
+<p>ICMP差错报告报文：重点不可达、源点抑制（路由或主机因拥塞而丢弃数据）、时间超过、参数问题、改变路由（重定向）</p>
+<p>ping使用了ICMP询问报文中的回送请求和回答请求</p>
+<p>首部长度</p>
+<p>MF=1表示后面还有其他分片</p>
+<p>DF=1表示可以分片</p>
+<h2 id="IPV6"><a href="#IPV6" class="headerlink" title="IPV6"></a>IPV6</h2><p>16个字节，128位</p>
+<p>IPV6取消了校验和字段，首部长度固定，也不需要首部长度字段。</p>
+<p>IPV6不允许分片，如果数据报太大，则路由器把该数据报丢弃</p>
+<h2 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h2><p>路由选择功能：获取网络拓扑信息、构建路由表、在网络中更新路由信息、选择到达每个目的网络的最优路径、识别一个网络的无环通路。</p>
+<p>路由收敛是指当路由环境发生变化后，各路由器调整自己的路由表以适应网络拓扑结构的变换，最终达到稳定状态</p>
+<p>RIP是应用层协议，OSPF是网络层协议</p>
+<p>OPSF使用hello分组与邻居保持连接</p>
+<p>OSPF路由器：区域内部路由器、主干路由器、区域边界路由器、自治域边界路由器</p>
+<p>BGP交换的网络可达性信息是到达某个网络所经过的路径</p>
+<h2 id="IP组播"><a href="#IP组播" class="headerlink" title="IP组播"></a>IP组播</h2><p>一个组播所需要的带宽小于多个单播带宽之和</p>
+<p>组播地址范围：224.0.0.0-239.255.255.255</p>
+<p>组播需要路由器增加一些能够识别组播的软件</p>
+<h2 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h2><p>当一个分组到达用户的本地LAN时，它被转送发给某一台与本地LAN相连接的路由器。该路由器寻找目的主机，这时本地代理响应该请求，将这些分组封装到一些新IP分组的载荷，并将新分组发送给外部代理，外部代理将分组移交给移动后的主机。</p>
+<p>注册过程将新的可达信息通知归属代理。</p>
+<p>移动主机在原始本地网时，获得的是主地址，当移动到其他网段后会产生一个临时辅地址。</p>
+<h2 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h2><p>路由器依据传输距离进行选择</p>
+<p>路由选择处理机根据选定的路由选择协议构造路由表</p>
+<p>分组转发部分：交换结构、输入端口、输出端口</p>
+<p>路由选择部分：路由选择处理机、路由选择协议、路由表</p>
+<p>默认路由，目的地址：0.0.0.0，子网掩码：0.0.0.0</p>
+<h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="IO方式"><a href="#IO方式" class="headerlink" title="IO方式"></a>IO方式</h2><p>中断处理过程：关中断-&gt;保存断点-&gt;识别中断源-&gt;保存现场-&gt;中断事件处理-&gt;恢复现场-&gt;开中断-&gt;中断返回</p>
+<p>高优先级置0表示可被中断，比该中断优先级低的置1表示不可被中断。</p>
+<p>总线仲裁方式I/O设备争用总线，中断判优方式I/O设备争用CPU</p>
+<p>中断向量地址是中断服务程序入口地址的地址</p>
+<p>自陷是人为设定的特殊处理机制</p>
+<p>CPU会统一扫描各中断源进行判优决定响应哪个中断源，每个存储周期结束后检查是否有DMA</p>
+<p>主存故障引起机器校验中断（内中断）</p>
+<p>输入输出引起访管中断，需要调用系统接口</p>
+<p>主存和CPU以外的中断叫外中断</p>
+<p>高中断级别-&gt;低中断级别，0表示不可中断，1表示可中断</p>
+<p>中断保护：PC和PSW，由硬件完成</p>
+<p>DMA只能用于数据传输，不能中断程序。不占用程序计数器和寄存器</p>
+<p>CPU工作周期：取指周期、间址周期、执行周期、中断周期</p>
+<p>DMA可以在CPU工作周期间的任意缝隙中</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络层的功能"><span class="toc-number">1.1.</span> <span class="toc-text">网络层的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由算法"><span class="toc-number">1.2.</span> <span class="toc-text">路由算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV4"><span class="toc-number">1.3.</span> <span class="toc-text">IPV4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6"><span class="toc-number">1.4.</span> <span class="toc-text">IPV6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由协议"><span class="toc-number">1.5.</span> <span class="toc-text">路由协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP组播"><span class="toc-number">1.6.</span> <span class="toc-text">IP组播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动IP"><span class="toc-number">1.7.</span> <span class="toc-text">移动IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络层设备"><span class="toc-number">1.8.</span> <span class="toc-text">网络层设备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机组成原理"><span class="toc-number">2.</span> <span class="toc-text">计算机组成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IO方式"><span class="toc-number">2.1.</span> <span class="toc-text">IO方式</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

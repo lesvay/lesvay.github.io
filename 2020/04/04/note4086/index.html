@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>408刷题笔记6 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="操作系统内存管理概念程序编译过程：预处理cpp-&amp;gt;编译ccl-&amp;gt;汇编as-&amp;gt;链接ld-&amp;gt;可执行文件。形成逻辑地址的阶段：链接。完成逻辑到物理地址的变换：装载。
+程序正在I/O,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">408刷题笔记6</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">408刷题笔记6</h1>
+        <div class="stuff">
+            <span>四月 04, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/408/" rel="tag">408</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="内存管理概念"><a href="#内存管理概念" class="headerlink" title="内存管理概念"></a>内存管理概念</h2><p>程序编译过程：预处理cpp-&gt;编译ccl-&gt;汇编as-&gt;链接ld-&gt;可执行文件。形成逻辑地址的阶段：链接。完成逻辑到物理地址的变换：装载。</p>
+<p>程序正在I/O操作时不能交换主存，否则它的I/O数据区将被新换入的进程占用，导致错误。</p>
+<p>段页式系统中，进程首先划分为段，每段再进一步划分为页</p>
+<p>覆盖技术：单一连续存储管理、固定分区分配的存储管理</p>
+<p>静态装入：编程阶段九八物理地址计算好</p>
+<p>可重定位：装入时把逻辑地址转换为物理地址，但装入后不能改变</p>
+<p>动态重定位：执行时再决定装入地址并装入，同一个模块在内存的物理地址有可能改变。</p>
+<p>产生内部碎片：分页式、固定分区、段页式</p>
+<p>产生外部碎片：分段式</p>
+<p>页表的首地址 存放在页表基址寄存器中PTBR</p>
+<p>分段是在用户编程时，将程序按照逻辑划分为几个逻辑段。分段存储，将程序按照逻辑段划分有利于其动态链接。</p>
+<p>可重入程序，通过共享来使用同一块存储空间，通过动态连接的方式将所需的程序段映射到相关进程中去，减少了对换数量。</p>
+<p>段式存储：方便编程、分段共享、分段保护、动态链接和动态增长</p>
+<p>主存的访问是以字节或字为单位</p>
+<p>分页：固定长度，只需给出地址</p>
+<p>分段：不固定，要给出段名和段内地址</p>
+<p>段页式存储：分段的方法分配和管理用户地址空间，分页方法来管理物理存储空间</p>
+<p>动态分区有外部碎片无内部碎片</p>
+<p>固定分区有内部碎片无外部碎片</p>
+<h2 id="虚拟内存管理"><a href="#虚拟内存管理" class="headerlink" title="虚拟内存管理"></a>虚拟内存管理</h2><p>虚拟存储是补充内存逻辑空间的技术</p>
+<p>虚拟存储器最大容量由计算机的地址结构决定</p>
+<p>分页存储间接扩充了内存</p>
+<p>修改位和访问位供调出页面使用</p>
+<p>抖动：频繁的引入主存页面，淘汰后立即调入，调然后又立即淘汰</p>
+<p>虚拟存储技术存储管理方法需要有请求机制</p>
+<p>快表（相联存储器）用于地址变换</p>
+<p>只有FIFO会导致Belady异常</p>
+<p>交换技术交换的是整个进程，而虚拟存储技术交换的是部分进程</p>
+<p>覆盖技术覆盖段相互独立，不存在交叉访问。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h2><p>FDM适合传输模拟，TDM适合传输数字</p>
+<p>1-坚持型CSMA 监听到信道忙继续监听直到空闲发送数据</p>
+<p>p-坚持型CSMA 监听到信道忙等待下一时隙监听空闲概论P发送数据，忙以概论1-p推迟到下一时隙监听</p>
+<p>非坚持型CSMA监听到信道忙随机等待再监听</p>
+<p>争议期：冲突检测时间，信号在最远两个端点之间往返传输的时间</p>
+<p>二进制指数回退算法：后退延时的取值范围与重发次数n形成二进制指数关系。网络负载小，后退延时的取值范围小，负载大，其取值也大。取值越大帧重传时再次发生冲突的概论越低。在0——2^(i-1)中取一个数。</p>
+<p>CSMA/CA对正确接收的数据帧进行确认，无线局域网，不需要在发送过程中进行中途检测</p>
+<p>CSMA/CD有线网络</p>
+<p>令牌环网不会产生冲突，适合负载重的网络。</p>
+<h2 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h2><p>MAC提供无连接不可靠服务</p>
+<p>网卡实现的功能在物理层和数据链路层</p>
+<p>MAC地址冲突时，两台设备都不能正常使用</p>
+<p>MAC子层：组帧、拆帧、比特差错检测、寻址、竞争处理</p>
+<p>LLC子层：建立和释放数据链路层的逻辑链接、提供与高层的接口、差错控制、给帧加序号</p>
+<h2 id="广域网"><a href="#广域网" class="headerlink" title="广域网"></a>广域网</h2><p>局域网包括以太网、令牌环网等</p>
+<p>从互联网角度看局域网与广域网平等</p>
+<p>互联网可以连接不同类型网络</p>
+<p>广域网使用分组交换技术</p>
+<p>PPP：字符填充，面向字节的协议。由链路控制协议LCP（扩展链路控制协议，用于建立、配置、测试和管理数据链路）、网络控制协议NCP（为网络层协议建立和配置逻辑链接）、一个将IP数据报封装到串行链路的方法。</p>
+<p>HDLC：面向比特的协议，零比特填充，5个1后面加0。正常响应模式下只能由主站启动。包括信息帧(I帧)、监督帧(S帧)、无编号帧(U帧)</p>
+<h2 id="数据链路层设备"><a href="#数据链路层设备" class="headerlink" title="数据链路层设备"></a>数据链路层设备</h2><p>物理层设备不可以分割冲突域，数据链路层可以分割冲突域，不能分割广播域，网络层设备可以分割广播域。</p>
+<p>交换机比集线器优点：支持多用户同时通讯</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统"><span class="toc-number">1.</span> <span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内存管理概念"><span class="toc-number">1.1.</span> <span class="toc-text">内存管理概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟内存管理"><span class="toc-number">1.2.</span> <span class="toc-text">虚拟内存管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">2.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介质访问控制"><span class="toc-number">2.1.</span> <span class="toc-text">介质访问控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局域网"><span class="toc-number">2.2.</span> <span class="toc-text">局域网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广域网"><span class="toc-number">2.3.</span> <span class="toc-text">广域网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据链路层设备"><span class="toc-number">2.4.</span> <span class="toc-text">数据链路层设备</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

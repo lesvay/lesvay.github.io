@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>408刷题笔记2 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="计算机网络计算机网络概述计算机网络是由自治计算机互连起来的集合体，使计算机之间更加紧密联系。
+计算机网络最基本的功能是数据通信，是其他功能的基础
+计算机网络三大主要功能：数据通信、资源共享、分布式处,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">408刷题笔记2</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">408刷题笔记2</h1>
+        <div class="stuff">
+            <span>三月 31, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/408/" rel="tag">408</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h2><p>计算机网络是由自治计算机互连起来的集合体，使计算机之间更加紧密联系。</p>
+<p>计算机网络最基本的功能是数据通信，是其他功能的基础</p>
+<p>计算机网络三大主要功能：数据通信、资源共享、分布式处理</p>
+<p>计算机网络逻辑功能上分为：资源子网、通信子网</p>
+<p>网络资源包括：硬件资源、软件资源和数据资源</p>
+<p>城域网是较大范围内连接多个局域网的局域网，仍是以太网。</p>
+<p>局域网与广域网之间除了范围，其协议也不同</p>
+<p>局域网：广播技术，是在数据链路层和物理层</p>
+<p>广域网：点对点、交换技术</p>
+<p>分组交换：把数据分成多个大小相当的小数据片</p>
+<p>发送时延=分组长度/信道宽带</p>
+<p>传播时延=信道长度/传播速率</p>
+<p>报文流：网络保持对报文边界追踪，接收到两个报文看成是两个</p>
+<p>字节流：不保持追踪，接收到两个字节流看成一个整体</p>
+<h2 id="计算机网络体系结构与参考模型"><a href="#计算机网络体系结构与参考模型" class="headerlink" title="计算机网络体系结构与参考模型"></a>计算机网络体系结构与参考模型</h2><p>协议是指不同结点对等实体之间进行通信的规则或约定，协议达成可以向上一层提供服务，也需要下一层提供服务。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>透明性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>协议</td>
+<td>水平</td>
+<td>看不见下一层的协议</td>
+</tr>
+<tr>
+<td>服务</td>
+<td>垂直</td>
+<td>可以看见下一层的服务</td>
+</tr>
+</tbody></table>
+<p>OSI三个主要概念：服务、接口、协议</p>
+<p>传输层和网络层才有拥塞控制的功能</p>
+<p>传输层以上是端到端的通信（端口号）</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>网络层</th>
+<th>传输层</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OSI</td>
+<td>无连接和面向连接</td>
+<td>面向连接</td>
+</tr>
+<tr>
+<td>TCP/IP</td>
+<td>无连接</td>
+<td>无连接和面向连接</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>OSI层</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td></td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>数据的解密加密、压缩、格式转换</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>会话管理和同步，信号中断恢复后可继续接着传</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>应答、分组排序、流量控制，增加相应端口信息</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>控制信息和IP地址</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>物理寻址、流量控制、差错检测，控制信息和MAC地址</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>TCP/IP</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td></td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>差错检测，流量控制</td>
+</tr>
+<tr>
+<td>网际层</td>
+<td>无连接不可靠数据报服务</td>
+</tr>
+<tr>
+<td>网络接口层</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="操作系统的基本概念"><a href="#操作系统的基本概念" class="headerlink" title="操作系统的基本概念"></a>操作系统的基本概念</h2><p>现代操作系统最基本的两个特征：并发和共享</p>
+<p>并发性：若干事件在同一时间间隔内发生</p>
+<p>并行性：若干事件在同一时刻发生</p>
+<p>操作系统接口：命令接口、系统调用</p>
+<p>命令接口：联机用户接口、脱机用户接口</p>
+<p>系统调用：也称程序接口，操作系统提供给应用程序的接口，只能通过用户程序间接使用。系统调用命令也称广义指令。</p>
+<p>计算机开机后程序最终被加载到内存的系统区，是一个RAM</p>
+<p>库函数有时会使用系统调用来实现功能，但不完全只使用系统调用。</p>
+<h2 id="操作系统的发展与分类"><a href="#操作系统的发展与分类" class="headerlink" title="操作系统的发展与分类"></a>操作系统的发展与分类</h2><p>实时操作系统必须在被控制对象规定时间内来处理来自外部的事件。采用抢占式的优先级高者优先以便可以及时的处理某些紧急事件。</p>
+<p>实时操作系统两个重要目标：实时性和可靠性，允许浪费某些资源。</p>
+<p>优先级+非抢占式调度算法可以改善系统的响应时间，保证重要的事件优先执行，次要的事件也能得到响应</p>
+<p>分时操作系统：时间片轮转，要求快速响应多个用户</p>
+<p>批处理系统：用户脱机使用、成批处理、多道程序并发执行，交互能力差</p>
+<p>分时操作系统：多个用户同时独立使用计算机、人机交互性强、响应及时</p>
+<p>实时操作系统：反应快，可靠性强，资源利用率低</p>
+<h2 id="操作系统的运行环境"><a href="#操作系统的运行环境" class="headerlink" title="操作系统的运行环境"></a>操作系统的运行环境</h2><p>输入输出需要中断，中断是在核心态下执行的</p>
+<p>系统调用需要触发trap陷入指令</p>
+<p>中断处理是操作系统必须提供的功能，各种错误处理需要中断，核心态和用户态切换也需要中断处理</p>
+<p>进入中断处理的程序是核心态的，只能属于操作系统程序</p>
+<p>核心态-&gt;用户态：操作系统完成，由中断返回到用户程序时</p>
+<p>用户态-&gt;核心态：硬件完成，发生中断时，外部中断</p>
+<p>进程切换属于系统调用执行过程中的事件，只能发生在核心态</p>
+<p>广义指令的调用可以发生在用户态，但其执行一定处于核心态</p>
+<p>输入输出涉及到中断，所以必须放到核心态下执行</p>
+<p>中断处理重要的两个寄存器：PC(程序计数器)、PSWR(程序状态字寄存器)。子程序只保护PC，中断处理，保护两个。</p>
+<p>中断：指CPU执行指令以外的事情发生。PC内容由中断隐指令保存、通用寄存器内容由操作系统保存。</p>
+<p>异常：也称内中断、例外或陷入，指CPU执行指令内部的事件</p>
+<p>通道技术使得I/O独立于CPU，使得输入与输出可以与CPU并行。</p>
+<p>中断技术指I/O结束后，可以中断CPU执行其他程序。</p>
+<p>多道程序指I/O与CPU在执行时间上可以并行。</p>
+<h2 id="操作系统的体系结构"><a href="#操作系统的体系结构" class="headerlink" title="操作系统的体系结构"></a>操作系统的体系结构</h2><p>微内核将内核与系统服务分离出来，使得服务之间使用进程机制进行通信。传统的是都在内核中。</p>
+<h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="计算机的性能指标"><a href="#计算机的性能指标" class="headerlink" title="计算机的性能指标"></a>计算机的性能指标</h2><p>CPU时钟频率越高完成指令的一个执行步骤所用的时间就越短</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MIPS</td>
+<td>每秒执行多少百万条指令，衡量标准机的性能，主频/CPI</td>
+</tr>
+<tr>
+<td>CPI</td>
+<td>平均每条指令的时钟周期数</td>
+</tr>
+<tr>
+<td>IPC</td>
+<td>每个时钟周期执行的指令数</td>
+</tr>
+<tr>
+<td>MFLOPS</td>
+<td>每秒执行多少百万条浮点数运算，衡量向量机的性能</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>字长</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机器字长</td>
+<td>计算机的位数，CPU一次能处理数据的位数，通常与CPU的寄存器位数有关，是数据运算的基本单位长度</td>
+</tr>
+<tr>
+<td>指令字长</td>
+<td>计算机指令字的位数</td>
+</tr>
+<tr>
+<td>存储字长</td>
+<td>二进制代码的位数==MDR的位数</td>
+</tr>
+<tr>
+<td>数据字长</td>
+<td>数据总线一次能并行传送信息的位数，可以不等于MDR</td>
+</tr>
+</tbody></table>
+<p>机器字长、指令字长、存储字长三者可以相等可以不等</p>
+<p>寄存器由触发器构成</p>
+<p>状态寄存器、通用寄存器、PC可以由汇编设置，指令寄存器完全透明。</p>
+<p>兼容指计算机软件或硬件的通用性，通常在同一系列不同型号的计算机间通用。</p>
+<p>64K×32位：地址总线宽度16位，数据总线宽带为32位，所以MAR为16位，PC为16位，MDR为32位。又指令字长=存储字长=机器字长，则IR、ACC、MQ、X均为32位</p>
+<p>CPU时钟周期：1/HZ</p>
+<p>程序执行时间：CPI×（1/MHZ）×I</p>
+<p>平均指令周期：1/MIPS</p>
+<p>平均执行速度：平均指令周期/CPU时钟周期</p>
+<h2 id="数制与编码"><a href="#数制与编码" class="headerlink" title="数制与编码"></a>数制与编码</h2><p>8421BCD码每4位对应一个十进制，其中1010—1111不能使用，因为十进制没得这几个数</p>
+<p>十进制转为其他进制：整数部分%进制，余数逆序输出，商继续除。小数部分乘以进制，整数部分输出，小数部分继续乘。</p>
+<p>低进制不能表示高进制的小数部分，如二进制不能表示十进制的小数，因为二进制只能有：1/2，1/4，1/8…</p>
+<p>ASCII码由7位表示，最高位保持为0</p>
+<p>小端存储，第一个存地位最小的两个数，如01234567H，存67H</p>
+<p>码距&gt;=2的数据校验码具有检错能力，码距越大，检错能力越强。</p>
+<p>汉明码码距&gt;2，可以检测出一位数据错误并指出位置,可以发现两位错误，并纠正1位</p>
+<p>奇偶校验码距=2，可以检测出一位数据错误或奇数位错误，不能指出距离，也不能检测出偶数位错误。奇校验当为奇数个1则正确，偶校验为偶数个1则正确。</p>
+<p>CRC通过除法运算建立数据和校验位之间的约定关系，检查出错误后可以请求重发、删除数据、通过余数值自行纠正。适合大量数据。</p>
+<p>汉明码纠正1位检验位数为k，2^k&gt;=n+k+1。纠正2位，2^(k-1)&gt;=n+k+1</p>
+<p>CRC码中，要求数字长度不变，余数与CRC码出错位的对应关系不变，将接收到的CRC码与多项式相除，为0则对，不为0则有错误，多项式选取合理的话可以判断出错位。</p>
+<p>海明码计算：</p>
+<p>数据为1010，长度n=4，则根据2^k&gt;=n+k+1，求得k=3，得到一个长n+k=7的表。</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>其中2^n位设为P(n+1),其余位子依次填入数据</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P1</td>
+<td>P2</td>
+<td>1</td>
+<td>P3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>有二进制表头</p>
+<table>
+<thead>
+<tr>
+<th>001</th>
+<th>010</th>
+<th>011</th>
+<th>100</th>
+<th>101</th>
+<th>110</th>
+<th>111</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P1</td>
+<td>P2</td>
+<td>1</td>
+<td>P3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>找出P表数字1的位置剩余表头数字该位置也是1的，并将对应数据拼合。</p>
+<p>P1(001) -&gt; M3(011)M5(101)M7(111)-&gt;100，奇0偶1</p>
+<p>P2(010)-&gt;M3(011)M6(110)M7(111)-&gt;110，奇1偶0</p>
+<p>P3(100)-&gt;M5(101)M6(110)M7(111)-&gt;010，奇0偶1</p>
+<p>根据奇偶校验有</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>奇</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>偶</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<hr>
+<p>或Pn采用异或的方式，全校验位即多加一个位子，当Pn有偶数个1时，则为0，奇数个1时则为1.</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机网络概述"><span class="toc-number">1.1.</span> <span class="toc-text">计算机网络概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机网络体系结构与参考模型"><span class="toc-number">1.2.</span> <span class="toc-text">计算机网络体系结构与参考模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统"><span class="toc-number">2.</span> <span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统的基本概念"><span class="toc-number">2.1.</span> <span class="toc-text">操作系统的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统的发展与分类"><span class="toc-number">2.2.</span> <span class="toc-text">操作系统的发展与分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统的运行环境"><span class="toc-number">2.3.</span> <span class="toc-text">操作系统的运行环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统的体系结构"><span class="toc-number">2.4.</span> <span class="toc-text">操作系统的体系结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机组成原理"><span class="toc-number">3.</span> <span class="toc-text">计算机组成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机的性能指标"><span class="toc-number">3.1.</span> <span class="toc-text">计算机的性能指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数制与编码"><span class="toc-number">3.2.</span> <span class="toc-text">数制与编码</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>408刷题笔记3 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="计算机网络通信基础信道不等于电路，一条可通信的电路可能包含多个信道
+调制：数字-&amp;gt;模拟
+解调：模拟-&amp;gt;数字
+模拟：频带传输
+数字：基带传输
+
+
+
+方式
+
+
+
+
+模拟信号传输模拟数据
+
+
+,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">408刷题笔记3</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">408刷题笔记3</h1>
+        <div class="stuff">
+            <span>四月 01, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/408/" rel="tag">408</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a>通信基础</h2><p>信道不等于电路，一条可通信的电路可能包含多个信道</p>
+<p>调制：数字-&gt;模拟</p>
+<p>解调：模拟-&gt;数字</p>
+<p>模拟：频带传输</p>
+<p>数字：基带传输</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模拟信号传输模拟数据</td>
+<td></td>
+</tr>
+<tr>
+<td>模拟信号传输数字数据</td>
+<td>QAM</td>
+</tr>
+<tr>
+<td>数字信号传输模拟数据</td>
+<td>脉冲编码调制PCM</td>
+</tr>
+<tr>
+<td>数字信号传输数字数据</td>
+<td>曼彻斯特、差分曼彻斯特</td>
+</tr>
+</tbody></table>
+<p>波特率（信号每秒变化的次数）=比特率/每码元含的比特数，即（log2 n，n为码元的有效值，此处为2）</p>
+<p>数据率=波特率/n，n表示一位数据需要几个电平表示，此处为2，曼彻斯特为4，4B/5B为4个需要5个，为4/5</p>
+<p>每码元所含比特数=传输速率/波特率</p>
+<p>离散值的个数=2^每码元所含比特数</p>
+<p>奈奎斯特：最大传输速率=2Wlog2V b/s,W表示带宽，采样频率、Baud=2W，V表示离散值个数</p>
+<p>香农：Wlog2（1+S/N） b/s，S信道所传输信号的平均功率，N为信道高噪声功率，S/N为信噪比。其中dB=10log10（S/N）</p>
+<p>奈奎斯特与香农两者相比取小的值</p>
+<p>码元传输速率（码元速率、波形速率）：单位时间内数字通信系统所传输的码元（脉冲个数或信号变化的次数）个数</p>
+<p>信息传输速率（信息速率、比特率）：单位时间内数字通信系统所传输的二进制码元（比特数）个数</p>
+<p>香农定理：影响信道最大传输速率的因素：信道的带宽和噪声比</p>
+<p>并行传输：距离短、速度快，适合计算机内部</p>
+<p>串行传输：距离长、速度慢</p>
+<p>曼彻斯特编码将时钟信号与数据信号都包含着信号中，并可以传输给对方，中间采用向上向下跳变区分0和1。适合二进制信号传输。占用的频带宽度是原始基带宽带的两倍。</p>
+<p>声音是模拟信号</p>
+<p>报文大小不固定，交换需要较大的存储空间，接收存储转发的时间不固定，所以不能应用于实时通信环境，如语音视频</p>
+<p>以太网采用的是分组交互</p>
+<table>
+<thead>
+<tr>
+<th>交换技术</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分组交换</td>
+<td>将报文分割，减小了传输时延。传输单位相比报文更小，有固定的长度。分为数据报（无连接）较可靠，虚电路（连接），虚电路包括永久性和临时性。一条线子可以有多条虚电路</td>
+</tr>
+<tr>
+<td>报文交换</td>
+<td>不固定且较长</td>
+</tr>
+<tr>
+<td>电路交换</td>
+<td>面向连接，建立时有时延，传输时实时性，不提供差错检测功能</td>
+</tr>
+</tbody></table>
+<p>NRZ 低电平0，高电平1</p>
+<p>NRZI与前一个一样0，不一样1</p>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><p>进程映像是：PCB、程序段和数据的组合，其中PCB是进程存在的唯一标志</p>
+<p>操作系统通过PCB对进程进行控制，PCB包含基本状态和优先权</p>
+<p>线程是处理机调度的基本单位可以独立执行程序，但没有自己独立的地址空间，可以通过他们的共享存储空间进行通信。</p>
+<p>进程之间的地址是私有的只能自己访问</p>
+<p>进程重要的特性是动态性</p>
+<p>封闭性：执行结果只取决于自身</p>
+<p>进程有生命周期，不会一直存在于系统之中，会因为结束或异常而撤销。</p>
+<p>多对一的模型中，一个线程被阻塞则该进程被阻塞</p>
+<table>
+<thead>
+<tr>
+<th>C语言程序</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码和赋值数据段（正文段）</td>
+<td>二进制代码和常量</td>
+</tr>
+<tr>
+<td>数据堆段</td>
+<td>动态分配的存储区</td>
+</tr>
+<tr>
+<td>数据栈段</td>
+<td>临时使用的变量</td>
+</tr>
+</tbody></table>
+<p>全局变量与用户代码有关，与PCB无关</p>
+<p>进程自身决定从运行状态到阻塞状态</p>
+<p>I/O操作导致阻塞</p>
+<p>进程间通信有管道、消息传递、共享内存、文件映射、套接字</p>
+<p>进程可以创建进程或线程、线程只能创建线程</p>
+<p>管道是一个固定大小的缓冲区，通常为内存的一页</p>
+<p>多任务是针对于操作系统</p>
+<p>多线程是针对于程序</p>
+<h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="定点数的表示与运算"><a href="#定点数的表示与运算" class="headerlink" title="定点数的表示与运算"></a>定点数的表示与运算</h2><p>补码表示最后要+1</p>
+<p>1表示负号</p>
+<p>int 32位 short 16位，8位1个字节</p>
+<p>有符号转无符号，原来的补码就是现在的原码</p>
+<table>
+<thead>
+<tr>
+<th>0的表示</th>
+<th>+</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原码</td>
+<td>00000</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>反码</td>
+<td>00000</td>
+<td>11111</td>
+</tr>
+<tr>
+<td>补码</td>
+<td>00000</td>
+<td>00000</td>
+</tr>
+<tr>
+<td>移码</td>
+<td>10000</td>
+<td>10000</td>
+</tr>
+</tbody></table>
+<p>若x为正数，则原码、反码、补码相同</p>
+<p>若x为负数，补码变原码，符号位不变，数值位取反，末尾+1</p>
+<p>无论x是正数还是符数[x]求[-x]即连同符合每位取反末尾+1</p>
+<p>n+1位定点小数反码范围：-1+2^(-n)&lt;=x&lt;=1-2^(-n)</p>
+<p>n+1位定点小数原码范围：-2^(n)+1&lt;=x&lt;=2^(n)-1</p>
+<p>补码移位，正数左右都添0，负数右1左0</p>
+<p>原码移位左右补0</p>
+<p>同一个数的补码和移码表示，数值相同，符号位相反</p>
+<p>不带进位的位循环左移最高位进入最低位和标志寄存器</p>
+<p>模4补码具有模2补码的全部优点且更容易检查加减运算中的溢出问题，存储时只需要一个符号位，在ALU中完成加减运算需要把每个符号位都送至ALU的双符号位中。</p>
+<p>双符号位，第一位表示结果正0负 1，第二位表示是否溢出</p>
+<p>加减法溢出，符号位C0最高位进位C1，异或为1表示溢出</p>
+<p>*2左移，/2右移</p>
+<p>补码范围-128~127</p>
+<p>原码乘法符号位与数值位分开运算</p>
+<p>补码一位乘法，需要移动n位，进行n+1次加法运算.原来的n位，右移n+1位，符号位，共2n+1位。</p>
+<p>原码一位乘法，移动与加法运算均为n</p>
+<p>原码不恢复余数除法即加减交替法，仅当最后一步不够减时，才恢复一次余数</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通信基础"><span class="toc-number">1.1.</span> <span class="toc-text">通信基础</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统"><span class="toc-number">2.</span> <span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程与线程"><span class="toc-number">2.1.</span> <span class="toc-text">进程与线程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机组成原理"><span class="toc-number">3.</span> <span class="toc-text">计算机组成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定点数的表示与运算"><span class="toc-number">3.1.</span> <span class="toc-text">定点数的表示与运算</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

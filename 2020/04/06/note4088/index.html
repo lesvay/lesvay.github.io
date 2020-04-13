@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>408刷题笔记8 - 李呀呀</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="李紫薇,"> 
+    <meta name="description" content="操作系统IO管理概述可寻址是块设备的基本特征
+共享设备是可寻址的和可随机访问的。一段时间允许多个进程同时访问，同一时间只允许一个进程访问。不会引起进程死锁。
+I/O即设备控制器实现对设备的控制
+DM,"> 
+    <meta name="author" content="lesvay"> 
+    <link rel="alternative" href="atom.xml" title="李呀呀" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李呀呀</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://lesvay.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">408刷题笔记8</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">408刷题笔记8</h1>
+        <div class="stuff">
+            <span>四月 06, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/408/" rel="tag">408</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="IO管理概述"><a href="#IO管理概述" class="headerlink" title="IO管理概述"></a>IO管理概述</h2><p>可寻址是块设备的基本特征</p>
+<p>共享设备是可寻址的和可随机访问的。一段时间允许多个进程同时访问，同一时间只允许一个进程访问。不会引起进程死锁。</p>
+<p>I/O即设备控制器实现对设备的控制</p>
+<p>DMA是I/O设备和主存之间的数据通路，不经过CPU。DMA是方式，通道是处理器。</p>
+<p>命令/状态寄存器控制DMA的工作模式并反映给CPU当前的状态，地址寄存器存放DMA作业时的源地址和目标地址，数据寄存器存放DMA转移的数据。</p>
+<p>字节多路通道，各个通道循环使用主通道，适合大量低速或中速I/O设备</p>
+<p>绝对号：区分和识别设备</p>
+<p>固有属性：决定了设备的使用方式</p>
+<p>独立性：提高设备分配的灵活性和利用率</p>
+<p>安全性：保证分配设备不会永久阻塞</p>
+<p>通道设备控制设备控制器、设备控制器控制设备工作</p>
+<p>所有设备启动工作由系统统一来做</p>
+<p>来自通道的I/O中断事件由设备管理负责处理</p>
+<p>编制好的通道程序是存放在主存中的</p>
+<p>通道在完成通道程序后向CPU发出报告产生中断</p>
+<p>设备驱动程序按类型分配，每类提供一个</p>
+<p>系统调用命令是接口，不会改变。设备驱动程序负责执行操作系统发出的I/O命令，因设备不同而不同</p>
+<p>I/O流程：用户程序-&gt;系统调用处理程序(设备无关软件)-&gt;设备驱动程序-&gt;中断处理程序</p>
+<p>通道方式相对于DMA方式CPU干预更深，而且可以使用一些指令灵活改变通道程序</p>
+<p>DMA方式传输批量数据以存储器为核心，中断控制方式传输以字节为单位以CPU为核心</p>
+<h2 id="IO核心子系统"><a href="#IO核心子系统" class="headerlink" title="IO核心子系统"></a>IO核心子系统</h2><p>设备分配的数据结构：SDT系统设备表（整个系统只有一张）-&gt;DCT设备控制表（每个设备有一张）-&gt;COCT控制器控制表（每个控制器）&lt;-&gt;CHCT通道控制表（每个通道）</p>
+<p>SPOOLing输入输出井磁盘上的存储空间，缓冲池是在内存开辟空间。</p>
+<h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><h2 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h2><p>可靠是指使用确认机制来确保传输的数据不丢失</p>
+<p>TCP报文长20B，IP报文长20B</p>
+<p>使用UDP传输时，应用层要提供可靠性方面的工作</p>
+<h2 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h2><p>伪首部只在计算校验和时临时添加，不计入UDP的长度中。</p>
+<p>UDP数据报格式包括：源端口号、目的端口号、报文长度和校验和。</p>
+<p>长度字段记录UDP数据包的长度，包括首部和数据部分。</p>
+<p>校验和不是必须的，如果不使用则将校验和字段设置为0，如果校验结果为0，则将校验和全置为1</p>
+<p>标识符相同才可以进行组装</p>
+<h2 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h2><p>协议字段：17UDP,6TCP</p>
+<p>TCP采用的是报文段的确认机制</p>
+<p>TCP最大数据流：接收方允许的窗口和拥塞窗口最小值</p>
+<p>滑动窗口的作用：流量控制</p>
+<p>拥塞窗口是发送端根据网络拥塞情况确定的窗口值</p>
+<p>新的RTT=（1-α）×（旧RTT）+α×新的RTT样本</p>
+<h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="IO系统基本概念"><a href="#IO系统基本概念" class="headerlink" title="IO系统基本概念"></a>IO系统基本概念</h2><p>I/O设备通过设备控制器与总线相连</p>
+<p>通道程序存放在主存中，通道程序由通道执行</p>
+<h2 id="外部设备"><a href="#外部设备" class="headerlink" title="外部设备"></a>外部设备</h2><p>打印机从打字原理区分分为击打式和非击打式。按照能否打出汉字来区分分为点阵式和活字式。</p>
+<p>汉字内码在主存中占用8个字节</p>
+<p>VRAM存放ASCII码显示字符</p>
+<p>RAID是无冗余和无校验，有多个物理盘组成，不影响磁记录密度，也不会提高磁盘利用率</p>
+<h2 id="IO接口"><a href="#IO接口" class="headerlink" title="IO接口"></a>IO接口</h2><p>I/O的命令字、状态字、中断类型号</p>
+<p>区分存储单元和I/O设备需要不同的地址码</p>
+<p>I/O功能：数据格式转换、I/O过程中错误与状态检测、I/O操作的控制与定时、与主机和外设通信</p>
+<p>按照数据传输格式可以将接口分为并行接口和串行接口</p>
+<p>统一编址方式下，存储单元和I/O设备是靠不同的地址码区分，访存指令可以访问I/O设备</p>
+<p>独立编址方式下，存储单元和I/O设备是靠不同的指令来区分</p>
+<p>数据传输发生在通用寄存器和I/O端口之间</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='//music/qinjintianxia.jpg'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统"><span class="toc-number">1.</span> <span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IO管理概述"><span class="toc-number">1.1.</span> <span class="toc-text">IO管理概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO核心子系统"><span class="toc-number">1.2.</span> <span class="toc-text">IO核心子系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输层"><span class="toc-number">2.</span> <span class="toc-text">传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#传输层提供的服务"><span class="toc-number">2.1.</span> <span class="toc-text">传输层提供的服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP协议"><span class="toc-number">2.2.</span> <span class="toc-text">UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP协议"><span class="toc-number">2.3.</span> <span class="toc-text">TCP协议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机组成原理"><span class="toc-number">3.</span> <span class="toc-text">计算机组成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IO系统基本概念"><span class="toc-number">3.1.</span> <span class="toc-text">IO系统基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部设备"><span class="toc-number">3.2.</span> <span class="toc-text">外部设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO接口"><span class="toc-number">3.3.</span> <span class="toc-text">IO接口</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
